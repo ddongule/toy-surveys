@@ -4,6 +4,22 @@ Rails.application.routes.draw do
 
   get 'cock_recommend/index'
 
+  get 'cock_recommend/taste'
+
+  get 'cock_recommend/material'
+
+  get 'cock_recommend/alcohol'
+
+  get 'cock_recommend/amount'
+
+  get 'cock_recommend/soda'
+
+  get 'cock_recommend/mouth_feel'
+
+  get 'cock_recommend/base'
+  
+  get 'cock_recommend/insta'
+
   get 'cock_recommend/result'
   
   get 'cock_info/index'
