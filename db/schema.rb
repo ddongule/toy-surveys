@@ -13,13 +13,14 @@
 ActiveRecord::Schema.define(version: 20190118011408) do
 
   create_table "cocktails", force: :cascade do |t|
+    t.string "name"
     t.integer "taste_sweet_sugar"
     t.integer "taste_sweet_fruit"
     t.integer "taste_fresh"
     t.integer "taste_bitters_fruit"
     t.integer "taste_bitters_drink"
     t.integer "alcohol"
-    t.integer "quantity"
+    t.integer "amount"
     t.string "etc"
     t.string "mouthfeel"
     t.string "base"
