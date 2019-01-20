@@ -70,8 +70,8 @@ class CockRecommendController < ApplicationController
       ok = false
       count = 0
       target = 5
-      taste_temp = Array.new
       while !ok
+        taste_temp = Array.new
         cocktail_all.each do |cocktail|
           if user_taste_sweet_sugar == cocktail.taste_sweet_sugar
             count = cocunt + 1
@@ -100,19 +100,22 @@ class CockRecommendController < ApplicationController
         
         if taste_temp.length < 1
           target = target - 1
-        else
+        else # 맛으로 결과가 나왔다면
           ok = true
         end
       
-        if taste_temp.length <= 3 and taste_temp.length >=1
+        if taste_temp.length <= 3 and taste_temp.length >=1 # 필터링 결과 3개 이하
           taste_temp.each do |x|
             @result_cocktail.insert(x)
           end
+        else # 3개 초과면 그걸가지고 다음 단계 진행
+          cocktail_all = Array.new(taste_temp)
         end
       end
     end 
 
     # 도수
+    sava = Array.new(cocktail_all)
     cocktail_all.each do |cocktail|
     #  for i in 0..cocktail_all.length-1
         if $user_alcohol == 1 and cocktail.alcohol != 1 # 논알콜일 때 알콜이 1이 아닌 애들 다 제거
@@ -130,6 +133,17 @@ class CockRecommendController < ApplicationController
           end
         end
     #  end
+    end
+
+    if cocktail_all.length <= 3 and cocktail_all.length >= 1
+      cocktail_all.each do |x|
+        @result_cocktail.insert(x)
+        cocktail.delete(x)
+      end
+    elsif cocktail_all.length = 0
+      cocktail_all = Array.new(save)
+    else
+      # cocktail_all 그대로
     end
 
     # 양
