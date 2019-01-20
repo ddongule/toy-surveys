@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
   get 'cock_recommend/index'
 
+  get 'cock_recommend/warning'
+
   get 'cock_recommend/avoid'
 
   get 'cock_recommend/taste'
