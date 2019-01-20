@@ -66,8 +66,6 @@ class CockRecommendController < ApplicationController
       end
     end
     
-    
-
     if $user_taste <=> ["상관없음"] == nil # 맛을 원하면
       ok = false
       count = 0
@@ -99,8 +97,14 @@ class CockRecommendController < ApplicationController
             taste_temp.insert(cocktail)
           end
         end
-
-        if taste_temp.length <= 3
+        
+        if taste_temp.length < 1
+          target = target - 1
+        else
+          ok = true
+        end
+      
+        if taste_temp.length <= 3 and taste_temp.length >=1
           taste_temp.each do |x|
             @result_cocktail.insert(x)
           end
