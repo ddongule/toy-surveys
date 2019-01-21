@@ -8,13 +8,23 @@ Rails.application.routes.draw do
 
   get 'cock_recommend/avoid'
 
+  get 'cock_recommend/avoid_update'
+
   get 'cock_recommend/taste'
+
+  get 'cock_recommend/taste_update'
 
   get 'cock_recommend/alcohol'
 
+  get 'cock_recommend/alcohol_update'
+
   get 'cock_recommend/amount'
+  
+  get 'cock_recommend/amount_update'
 
   get 'cock_recommend/challenge'
+
+  get 'cock_recommend/challenge_update'
   
   get 'cock_recommend/result'
   
