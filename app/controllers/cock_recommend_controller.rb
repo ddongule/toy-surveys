@@ -7,7 +7,7 @@ class CockRecommendController < ApplicationController
   $user_challenge = "상관없음"
   $recommend_arr = Array.new
   $result_arr = Array.new
-
+  $debug = Array.new(5)
   def index
   end
 
@@ -70,8 +70,8 @@ class CockRecommendController < ApplicationController
       count = 0
       target = 5
 
-      while !ok or target <0
-        $taste_temp = Array.new
+      while target > 0 and (not ok)
+        taste_temp = Array.new
 
         $recommend_arr.each do |cocktail|
           if user_taste_sweet_sugar == cocktail.taste_sweet_sugar
@@ -93,32 +93,35 @@ class CockRecommendController < ApplicationController
           if user_taste_bitters_drink == cocktail.taste_bitters_drink
             count = count + 1
           end
-          
+        #  logger.debug "count : #{count}, target : #{target}"
           if target == count # 같은 정도가 목표치에 만족하면 (같은 게 3개 4개...)
-            $taste_temp.insert(cocktail)
+            taste_temp.push(cocktail)
           end
           count = 0
         end
-        
-        if $taste_temp.length < 1
+
+      #  logger.debug "taste_temp.length : #{taste_temp.length}"
+
+        if taste_temp.length < 1
           target = target - 1
         else # 맛으로 결과가 나왔다면
           ok = true
         end
       
-        if $taste_temp.length <= 3 and $taste_temp.length >=1 # 필터링 결과 3개 이하
+        if taste_temp.length <= 3 and taste_temp.length >=1 # 필터링 결과 3개 이하
          # taste_temp.each do |x|
-          $result_arr = Array.new($taste_temp)
+          $result_arr = Array.new(taste_temp)
          # end
           redirect_to "/cock_recommend/result"
           return
-
-        elsif $taste_temp.length == 0
-          redirect_to "/cock_recommend/warning"
-          return
-        else  # 3개 초과면 그걸가지고 다음 단계 진행
-          $recommend_arr = Array.new($taste_temp)
         end
+      end
+      
+      if taste_temp.length == 0
+        redirect_to "/cock_recommend/warning"
+        return
+      else  # 3개 초과면 그걸가지고 다음 단계 진행
+        $recommend_arr = Array.new(taste_temp)
       end
     end 
     redirect_to "/cock_recommend/alcohol"
@@ -154,7 +157,7 @@ class CockRecommendController < ApplicationController
 
     if temp.length <= 3 and temp.length >= 1
       temp.each do |x|
-        $result_arr.insert(x)
+        $result_arr.push(x)
       end
       redirect_to "/cock_recommend/result"
       return
@@ -196,7 +199,7 @@ class CockRecommendController < ApplicationController
 
     if temp.length <= 3 and temp.length >= 1
       temp.each do |x|
-        $result_arr.insert(x)
+        $result_arr.push(x)
       end
       redirect_to "/cock_recommend/result"
       return
@@ -218,10 +221,10 @@ class CockRecommendController < ApplicationController
     # 도전
     if $user_challenge.split(",").include?("상관없음")
       if $recommend_arr.length >3 # 전체가 3개 초과일 때 랜덤으로
-        $result_arr.insert($recommend_arr.sample(3))
+        $result_arr.push($recommend_arr.sample(3))
       else  # 전체가 3개 이하면 그냥 전부 넣어주기
         for i in 0..$recommend_arr.length
-          $result_arr.insert($recommend_arr[i])
+          $result_arr.push($recommend_arr[i])
         end
       end
       redirect_to "/cock_recommend/result"
@@ -233,18 +236,18 @@ class CockRecommendController < ApplicationController
       $recommend_arr.each do |cocktail| # 도전하는 술 찾기
       #  for i in 0..@cocktail_all.length-1
           if $user_challenge.split(",").include?(cocktail.base) # 도전하는 게 있다면 칵테일 베이스 여러개인 경우 예외처리 요망
-            challenge_temp_list.insert(cockatil)
+            challenge_temp_list.push(cockatil)
             $recommend_arr.delete(cocktail)
           end
       #  end
       end
       
       if challenge_temp_list.length >=1 # 도전하는 술 추천하면 2개만 추천
-        $result_arr.insert(challenge_temp_list.sample(1))
-        $result_arr.insert($recommend_arr.sample(2))
+        $result_arr.push(challenge_temp_list.sample(1))
+        $result_arr.push($recommend_arr.sample(2))
 
       else # 도전하는 술이 all리스트에 없는 경우 3개 추천해줘야함
-        $result_arr.insert($recommned_arr.sample(3))
+        $result_arr.push($recommned_arr.sample(3))
       end
     end
 
