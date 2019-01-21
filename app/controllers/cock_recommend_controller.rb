@@ -162,7 +162,7 @@ class CockRecommendController < ApplicationController
       redirect_to "/cock_recommend/result"
       return
     elsif temp.length = 0
-      # redirect_to "/cock_recommend/warning"
+      redirect_to "/cock_recommend/warning"
     else
       # @cocktail_all 그대로
     end
@@ -204,7 +204,7 @@ class CockRecommendController < ApplicationController
       redirect_to "/cock_recommend/result"
       return
     elsif temp.length = 0
-      # redirect_to "/cock_recommend/warning"
+      redirect_to "/cock_recommend/warning"
     else
       # @cocktail_all 그대로
     end
@@ -235,11 +235,14 @@ class CockRecommendController < ApplicationController
 
       $recommend_arr.each do |cocktail| # 도전하는 술 찾기
       #  for i in 0..@cocktail_all.length-1
-          if $user_challenge.split(",").include?(cocktail.base) # 도전하는 게 있다면 칵테일 베이스 여러개인 경우 예외처리 요망
+        cocktail_base = cocktail.base.split(",")
+        for i in 0..cocktail_base.length-1
+          if $user_challenge.split(",").include?(cocktail_base[i]) # 도전하는 게 있다면 칵테일 베이스 여러개인 경우 예외처리 요망
             challenge_temp_list.push(cockatil)
             $recommend_arr.delete(cocktail)
+            next
           end
-      #  end
+        end
       end
       
       if challenge_temp_list.length >=1 # 도전하는 술 추천하면 2개만 추천
