@@ -9,6 +9,7 @@ class CockRecommendController < ApplicationController
   $result_arr = Array.new
   $debug = Array.new(5)
   $trash = Array.new
+  $current_state = "/"
 
   def index
   end
@@ -16,6 +17,22 @@ class CockRecommendController < ApplicationController
   def warning
   end
   
+  def warning_update
+
+    if current_state == "taste"
+      redirect_to "/cock_recommend/alcohol"
+      return
+    elsif current_state == "alcohol"
+      redirect_to "/cock_recommend/amount"
+      return
+    elsif current_state == "amount"
+      redirect_to "/cock_recommend/challenge"
+      return
+    else
+    end
+    
+  end
+
   def avoid
     $result_arr = Array.new
     $recommend_arr = Array.new
@@ -128,6 +145,7 @@ class CockRecommendController < ApplicationController
       end
       
       if taste_temp.length == 0
+        $current_state = "taste"
         redirect_to "/cock_recommend/warning"
         return
       else  # 3개 초과면 그걸가지고 다음 단계 진행
@@ -183,6 +201,7 @@ class CockRecommendController < ApplicationController
     end
     
     if temp.length == 0
+      $current_state = "alcohol"
       redirect_to "/cock_recommend/warning"
       return
     else
@@ -241,6 +260,7 @@ class CockRecommendController < ApplicationController
     end
     
     if temp.length == 0
+      $current_state = "amount"
       redirect_to "/cock_recommend/warning"
       return
     else
