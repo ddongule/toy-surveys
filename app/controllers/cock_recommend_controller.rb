@@ -8,6 +8,8 @@ class CockRecommendController < ApplicationController
   $recommend_arr = Array.new
   $result_arr = Array.new
   $debug = Array.new(5)
+  $trash = Array.new
+
   def index
   end
 
@@ -23,7 +25,6 @@ class CockRecommendController < ApplicationController
     $user_avoid = params[:avoid]
     @cocktail_all = Cocktail.all()
     $recommend_arr = Array.new(@cocktail_all)
-    $trash = Array.new
     # 싫어하는 재료가 있는 칵테일 제거
     $recommend_arr.each do |cocktail|
       for i in 0..$user_avoid.length-1
@@ -39,6 +40,7 @@ class CockRecommendController < ApplicationController
     $trash.each do |x|
       $recommend_arr.delete(x)
     end
+    $trash.clear
 
     redirect_to "/cock_recommend/taste"
   end
@@ -140,28 +142,37 @@ class CockRecommendController < ApplicationController
 
   def alcohol_update
     $user_alcohol = params[:alcohol]
-
+    
+    $trash.clear
     # 도수
     temp = Array.new($recommend_arr)
 
     temp.each do |cocktail|
     #  for i in 0..@cocktail_all.length-1
         if $user_alcohol[0].to_i == 1 and cocktail.alcohol.to_1 != 1 # 논알콜일 때 알콜이 1이 아닌 애들 다 제거
-          temp.delete(cocktail)
-        
+          # logger.debug "cocktail : #{cocktail.name}, if문 : 1"
+          $trash.push(cocktail)
+        #  temp.delete(cocktail)
         elsif $user_alcohol[0].to_i == 2 and cocktail.alcohol.to_1 != 2 and cocktail.alcohol.to_1 != 3 # 도수 2일 때 2,3 제외하고 다 제거
-          temp.delete(cocktail)
-        
+          # logger.debug "cocktail : #{cocktail.name}, if문 : 1"
+          $trash.push(cocktail)
         elsif $user_alcohol[0].to_i == 8 and cocktail.alcohol.to_1 == 1 # 도수 8, 상관없을 때 1(논알콜)은 제거
-          temp.delete(cocktail)
-
+          # logger.debug "cocktail : #{cocktail.name}, if문 : 1"
+          $trash.push(cocktail)
         else
           if cocktail.alcohol.to_i < $user_alcohol[0].to_i-1 or cocktail.alcohol.to_i > $user_alcohol[0].to_i+1 # 나머지 경우 유저가 선택한 도수 +,-1 인거 제외하고 다 제거
-            temp.delete(cocktail)
+            # logger.debug "cocktail : #{cocktail.name}, if문 : 1"
+            $trash.push(cocktail)
           end
         end
     #  end
     end
+    
+    $trash.each do |x|
+      # logger.debug "삭제할 cocktail : #{x.name}"
+      $recommend_arr.delete(x)
+    end
+    $trash.clear
 
     if temp.length <= 3 and temp.length >= 1
       temp.each do |x|
@@ -187,26 +198,39 @@ class CockRecommendController < ApplicationController
     $user_amount = params[:amount]
 
     temp = Array.new($recommend_arr)
+    $trash.clear
+
+    # logger.debug "양"
+
      # 양
     temp.each do |cocktail|
       #for i in 0..@cocktail_all.length-1
-        if $user_amount[0] == 1 and cocktail.amount != 1 and cocktail.amount != 2 # 1일 땐 1,2만
-          temp.delete(cocktail)
+        if $user_amount[0].to_i == 1 and cocktail.amount != 1 and cocktail.amount != 2 # 1일 땐 1,2만
+          $trash.push(cocktail)
+          # logger.debug "cocktail : #{cocktail.name}, if문 : 1"
 
-        elsif $user_amount[0] == 2 and cocktail.amount > 3 # 2일때는 1,2만
-          temp.delete(cocktail)
+        elsif $user_amount[0].to_i == 2 and cocktail.amount == 4 # 2일때는 1,2만
+          # logger.debug "cocktail : #{cocktail.name}, if문 : 2"
+          $trash.push(cocktail)
 
-        elsif $user_amount[0] == 3 and (cocktail.amount < 2 or cocktail.amount > 4) # 3일때는 2,3,4만
-          temp.delete(cocktail)
+        elsif $user_amount[0].to_i == 3 and (cocktail.amount < 2 or cocktail.amount > 4) # 3일때는 2,3,4만
+          # logger.debug "cocktail : #{cocktail.name}, if문 : 3"
+          $trash.push(cocktail)
         
-        elsif $user_amount[0] == 4 and (cocktail.amount != 3 and cocktail.amount != 4) # 4일때는 3,4만
-          temp.delete(cocktail)
+        elsif $user_amount[0].to_i == 4 and (cocktail.amount != 3 and cocktail.amount != 4) # 4일때는 3,4만
+          # logger.debug "cocktail : #{cocktail.name}, if문 : 4"
+          $trash.push(cocktail)
 
         else
           # 삭제안함
         end
       #end
     end
+
+    $trash.each do |x|
+      $recommend_arr.delete(x)
+    end
+    $trash.clear
 
     if temp.length <= 3 and temp.length >= 1
       temp.each do |x|
