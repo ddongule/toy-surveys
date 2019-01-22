@@ -258,7 +258,7 @@ class CockRecommendController < ApplicationController
 
     $show_test = Array.new($recommend_arr)
     # 도전
-    if $user_challenge.split(",").include?("상관없음")
+    if $user_challenge.include?("상관없음")
       if $recommend_arr.length >3 # 전체가 3개 초과일 때 랜덤으로
         temp = $recommend_arr.sample(1)
         $result_arr.push(temp)
@@ -277,6 +277,7 @@ class CockRecommendController < ApplicationController
           $result_arr.push($recommend_arr[i])
         end
       end
+
       redirect_to "/cock_recommend/result"
       return
 
@@ -287,14 +288,16 @@ class CockRecommendController < ApplicationController
       #  for i in 0..@cocktail_all.length-1
         cocktail_base = cocktail.base.split(",")
         for i in 0..cocktail_base.length-1
-          if $user_challenge.split(",").include?(cocktail_base[i]) # 도전하는 게 있다면 칵테일 베이스 여러개인 경우 예외처리 요망
-            challenge_temp_list.push(cockatil)
-            $recommend_arr.delete(cocktail)
-            next
+          if $user_challenge.include?(cocktail_base[i]) # 도전하는 게 있다면 칵테일 베이스 여러개인 경우 예외처리 요망
+            challenge_temp_list.push(cocktail)
           end
         end
       end
-      
+
+      for i in 0..challenge_temp_list.length-1
+        $recommend_arr.delete(i)
+      end
+
       if challenge_temp_list.length >=1 # 도전하는 술 추천하면 2개만 추천        
         temp = challenge_temp_list.sample(1)[0]
         $result_arr.push(temp)
@@ -313,6 +316,7 @@ class CockRecommendController < ApplicationController
           $recommend_arr.delete(temp)
         else
         end
+
       else # 도전하는 술이 all리스트에 없는 경우 3개 추천해줘야함
         if $recommend_arr.length >= 3
           temp = $recommend_arr.sample(1)[0]
