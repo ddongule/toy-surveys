@@ -148,7 +148,7 @@ class CockRecommendController < ApplicationController
           temp.delete(cocktail)
 
         else
-          if cocktail.alcohol < $user_alcohol[0]-1 or cocktial.alcohol > $user_alcohol[0]+1 # 나머지 경우 유저가 선택한 도수 +,-1 인거 제외하고 다 제거
+          if cocktail.alcohol < $user_alcohol[0].to_i-1 or cocktial.alcohol > $user_alcohol[0]+1 # 나머지 경우 유저가 선택한 도수 +,-1 인거 제외하고 다 제거
             temp.delete(cocktail)
           end
         end
@@ -161,8 +161,11 @@ class CockRecommendController < ApplicationController
       end
       redirect_to "/cock_recommend/result"
       return
-    elsif temp.length = 0
+    end
+    
+    if temp.length == 0
       redirect_to "/cock_recommend/warning"
+      return
     else
       # @cocktail_all 그대로
     end
@@ -203,8 +206,11 @@ class CockRecommendController < ApplicationController
       end
       redirect_to "/cock_recommend/result"
       return
-    elsif temp.length = 0
+    end
+    
+    if temp.length = 0
       redirect_to "/cock_recommend/warning"
+      return
     else
       # @cocktail_all 그대로
     end
