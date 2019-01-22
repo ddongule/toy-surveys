@@ -15,6 +15,7 @@ class CockRecommendController < ApplicationController
   end
   
   def avoid
+    $result_arr = Array.new
   end
 
   def avoid_update
@@ -148,7 +149,7 @@ class CockRecommendController < ApplicationController
           temp.delete(cocktail)
 
         else
-          if cocktail.alcohol < $user_alcohol[0].to_i-1 or cocktial.alcohol > $user_alcohol[0]+1 # 나머지 경우 유저가 선택한 도수 +,-1 인거 제외하고 다 제거
+          if cocktail.alcohol < $user_alcohol[0].to_i-1 or cocktail.alcohol > $user_alcohol[0].to_i+1 # 나머지 경우 유저가 선택한 도수 +,-1 인거 제외하고 다 제거
             temp.delete(cocktail)
           end
         end
@@ -208,7 +209,7 @@ class CockRecommendController < ApplicationController
       return
     end
     
-    if temp.length = 0
+    if temp.length == 0
       redirect_to "/cock_recommend/warning"
       return
     else
@@ -227,9 +228,20 @@ class CockRecommendController < ApplicationController
     # 도전
     if $user_challenge.split(",").include?("상관없음")
       if $recommend_arr.length >3 # 전체가 3개 초과일 때 랜덤으로
-        $result_arr.push($recommend_arr.sample(3))
+        temp = $recommend_arr.sample(1)
+        $result_arr.push(temp)
+        $recommend_arr.delete(temp)
+
+        temp = $recommend_arr.sample(1)
+        $result_arr.push(temp)
+        $recommend_arr.delete(temp)
+        
+        temp = $recommend_arr.sample(1)
+        $result_arr.push(temp)
+        $recommend_arr.delete(temp)
+        
       else  # 전체가 3개 이하면 그냥 전부 넣어주기
-        for i in 0..$recommend_arr.length
+        for i in 0..$recommend_arr.length-1
           $result_arr.push($recommend_arr[i])
         end
       end
@@ -251,12 +263,53 @@ class CockRecommendController < ApplicationController
         end
       end
       
-      if challenge_temp_list.length >=1 # 도전하는 술 추천하면 2개만 추천
-        $result_arr.push(challenge_temp_list.sample(1))
-        $result_arr.push($recommend_arr.sample(2))
+      if challenge_temp_list.length >=1 # 도전하는 술 추천하면 2개만 추천        
+        temp = challenge_temp_list.sample(1)
+        $result_arr.push(temp)
+        
+        if $recommend_arr.length >= 2
+          temp = $recommend_arr.sample(1)
+          $result_arr.push(temp)
+          $recommend_arr.delete(temp)
 
+          temp = $recommend_arr.sample(1)
+          $result_arr.push(temp)
+          $recommend_arr.delete(temp)
+        elsif $recommend_arr.length == 1
+          temp = $recommend_arr.sample(1)
+          $result_arr.push(temp)
+          $recommend_arr.delete(temp)
+        else
+        end
       else # 도전하는 술이 all리스트에 없는 경우 3개 추천해줘야함
-        $result_arr.push($recommned_arr.sample(3))
+        if $recommend_arr.length >= 3
+          temp = $recommend_arr.sample(1)
+          $result_arr.push(temp)
+          $recommend_arr.delete(temp)
+
+          temp = $recommend_arr.sample(1)
+          $result_arr.push(temp)
+          $recommend_arr.delete(temp)
+
+          temp = $recommend_arr.sample(1)
+          $result_arr.push(temp)
+          $recommend_arr.delete(temp)
+
+        elsif $recommend_arr.length == 2
+          temp = $recommend_arr.sample(1)
+          $result_arr.push(temp)
+          $recommend_arr.delete(temp)
+
+          temp = $recommend_arr.sample(1)
+          $result_arr.push(temp)
+          $recommend_arr.delete(temp)
+
+        elsif $recommend_arr.length == 1
+          temp = $recommend_arr.sample(1)
+          $result_arr.push(temp)
+          $recommend_arr.delete(temp)
+        else
+        end
       end
     end
 
