@@ -1,3 +1,21 @@
 <h1>칵테일 정보</h1>
 
-칵테일 리스트
+<p>칵테일 리스트</p>
+<table>
+    <thead>
+        <th>이름</th>
+        <th>탄산</th>
+        <th>기타</th>
+        <th>기주</th>
+    </thead>
+    <tbody>
+        <% @cocktails.each do |c| %>
+        <tr>
+            <td><%=c.name%></td>
+            <td><%=c.soda%></td>
+            <td><%=c.etc%></td>
+            <td><%=c.base%></td>
+        </tr>
+        <% end %>
+    </tbody>
+</table>
