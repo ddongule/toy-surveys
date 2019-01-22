@@ -3,8 +3,13 @@
 <p>5. 아래 항목 중 도전해보고 싶은거 있어요?</p>
 <input type="checkbox" name="challenge[]" value="위스키">위스키</br>
 <input type="checkbox" name="challenge[]" value="진">진</br>
-<input type="checkbox" name="challenge[]" value="데낄라">데낄라</br>
+<input type="checkbox" name="challenge[]" value="데킬라">데킬라</br>
 <input type="checkbox" name="challenge[]" value="상관없음">상관없음 </br>
 
 <input type = 'submit' value = '다음'></input>
 </form>
+
+</br>
+<% $recommend_arr.each do |x| %>
+<%= x.name %>
+<% end %>

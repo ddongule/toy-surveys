@@ -16,21 +16,28 @@ class CockRecommendController < ApplicationController
   
   def avoid
     $result_arr = Array.new
+    $recommend_arr = Array.new
   end
 
   def avoid_update
     $user_avoid = params[:avoid]
     @cocktail_all = Cocktail.all()
     $recommend_arr = Array.new(@cocktail_all)
+    $trash = Array.new
     # 싫어하는 재료가 있는 칵테일 제거
     $recommend_arr.each do |cocktail|
       for i in 0..$user_avoid.length-1
         if cocktail.etc != nil
           if cocktail.etc.split(",").include?($user_avoid[i]) # user_avoid와 겹치는게 1개라고 있다면 제외
-            $recommend_arr.delete(cocktail)
+            $trash.push(cocktail)
+            next
           end
         end
       end
+    end
+
+    $trash.each do |x|
+      $recommend_arr.delete(x)
     end
 
     redirect_to "/cock_recommend/taste"
@@ -69,7 +76,7 @@ class CockRecommendController < ApplicationController
     if !$user_taste.include?("상관없음") # 맛을 원하면
       ok = false
       count = 0
-      target = 5
+      target = 4
 
       while target > 0 and (not ok)
         taste_temp = Array.new
@@ -95,7 +102,7 @@ class CockRecommendController < ApplicationController
             count = count + 1
           end
         #  logger.debug "count : #{count}, target : #{target}"
-          if target == count # 같은 정도가 목표치에 만족하면 (같은 게 3개 4개...)
+          if target <= count # 같은 정도가 목표치에 만족하면 (같은 게 3개 4개...)
             taste_temp.push(cocktail)
           end
           count = 0
@@ -139,17 +146,17 @@ class CockRecommendController < ApplicationController
 
     temp.each do |cocktail|
     #  for i in 0..@cocktail_all.length-1
-        if $user_alcohol[0] == 1 and cocktail.alcohol != 1 # 논알콜일 때 알콜이 1이 아닌 애들 다 제거
+        if $user_alcohol[0].to_i == 1 and cocktail.alcohol.to_1 != 1 # 논알콜일 때 알콜이 1이 아닌 애들 다 제거
           temp.delete(cocktail)
         
-        elsif $user_alcohol[0] == 2 and cocktail.alcohol != 2 and cocktail.alcohol != 3 # 도수 2일 때 2,3 제외하고 다 제거
+        elsif $user_alcohol[0].to_i == 2 and cocktail.alcohol.to_1 != 2 and cocktail.alcohol.to_1 != 3 # 도수 2일 때 2,3 제외하고 다 제거
           temp.delete(cocktail)
         
-        elsif $user_alcohol[0] == 8 and cocktail.alcohol == 1 # 도수 8, 상관없을 때 1(논알콜)은 제거
+        elsif $user_alcohol[0].to_i == 8 and cocktail.alcohol.to_1 == 1 # 도수 8, 상관없을 때 1(논알콜)은 제거
           temp.delete(cocktail)
 
         else
-          if cocktail.alcohol < $user_alcohol[0].to_i-1 or cocktail.alcohol > $user_alcohol[0].to_i+1 # 나머지 경우 유저가 선택한 도수 +,-1 인거 제외하고 다 제거
+          if cocktail.alcohol.to_i < $user_alcohol[0].to_i-1 or cocktail.alcohol.to_i > $user_alcohol[0].to_i+1 # 나머지 경우 유저가 선택한 도수 +,-1 인거 제외하고 다 제거
             temp.delete(cocktail)
           end
         end
@@ -225,6 +232,7 @@ class CockRecommendController < ApplicationController
   def challenge_update
     $user_challenge = params[:challenge]
 
+    $show_test = Array.new($recommend_arr)
     # 도전
     if $user_challenge.split(",").include?("상관없음")
       if $recommend_arr.length >3 # 전체가 3개 초과일 때 랜덤으로
@@ -264,48 +272,48 @@ class CockRecommendController < ApplicationController
       end
       
       if challenge_temp_list.length >=1 # 도전하는 술 추천하면 2개만 추천        
-        temp = challenge_temp_list.sample(1)
+        temp = challenge_temp_list.sample(1)[0]
         $result_arr.push(temp)
         
         if $recommend_arr.length >= 2
-          temp = $recommend_arr.sample(1)
+          temp = $recommend_arr.sample(1)[0]
           $result_arr.push(temp)
           $recommend_arr.delete(temp)
 
-          temp = $recommend_arr.sample(1)
+          temp = $recommend_arr.sample(1)[0]
           $result_arr.push(temp)
           $recommend_arr.delete(temp)
         elsif $recommend_arr.length == 1
-          temp = $recommend_arr.sample(1)
+          temp = $recommend_arr.sample(1)[0]
           $result_arr.push(temp)
           $recommend_arr.delete(temp)
         else
         end
       else # 도전하는 술이 all리스트에 없는 경우 3개 추천해줘야함
         if $recommend_arr.length >= 3
-          temp = $recommend_arr.sample(1)
+          temp = $recommend_arr.sample(1)[0]
           $result_arr.push(temp)
           $recommend_arr.delete(temp)
 
-          temp = $recommend_arr.sample(1)
+          temp = $recommend_arr.sample(1)[0]
           $result_arr.push(temp)
           $recommend_arr.delete(temp)
 
-          temp = $recommend_arr.sample(1)
+          temp = $recommend_arr.sample(1)[0]
           $result_arr.push(temp)
           $recommend_arr.delete(temp)
 
         elsif $recommend_arr.length == 2
-          temp = $recommend_arr.sample(1)
+          temp = $recommend_arr.sample(1)[0]
           $result_arr.push(temp)
           $recommend_arr.delete(temp)
 
-          temp = $recommend_arr.sample(1)
+          temp = $recommend_arr.sample(1)[0]
           $result_arr.push(temp)
           $recommend_arr.delete(temp)
 
         elsif $recommend_arr.length == 1
-          temp = $recommend_arr.sample(1)
+          temp = $recommend_arr.sample(1)[0]
           $result_arr.push(temp)
           $recommend_arr.delete(temp)
         else
