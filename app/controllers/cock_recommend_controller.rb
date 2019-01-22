@@ -295,7 +295,7 @@ class CockRecommendController < ApplicationController
       end
 
       for i in 0..challenge_temp_list.length-1
-        $recommend_arr.delete(i)
+        $recommend_arr.delete(challenge_temp_list[i])
       end
 
       if challenge_temp_list.length >=1 # 도전하는 술 추천하면 2개만 추천        
