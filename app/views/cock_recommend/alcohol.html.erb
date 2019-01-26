@@ -11,4 +11,9 @@
 <input type="radio" name="alcohol" value="8">상관없음 </br>
 
 <input type = 'submit' value = '다음'></input>
+
+///////////////
+<% $recommend_arr.each do |x| %>
+<%= x.name %></br>
+<%end%>
 </form>

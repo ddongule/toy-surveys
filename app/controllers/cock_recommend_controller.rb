@@ -192,15 +192,15 @@ class CockRecommendController < ApplicationController
     end
     $trash.clear
 
-    if temp.length <= 3 and temp.length >= 1
-      temp.each do |x|
+    if $recommend_arr.length <= 3 and $recommend_arr.length >= 1
+      $recommend_arr.each do |x|
         $result_arr.push(x)
       end
       redirect_to "/cock_recommend/result"
       return
     end
     
-    if temp.length == 0
+    if $recommend_arr.length == 0
       $current_state = "alcohol"
       redirect_to "/cock_recommend/warning"
       return
@@ -251,15 +251,15 @@ class CockRecommendController < ApplicationController
     end
     $trash.clear
 
-    if temp.length <= 3 and temp.length >= 1
-      temp.each do |x|
+    if $recommend_arr.length <= 3 and $recommend_arr.length >= 1
+      $recommend_arr.each do |x|
         $result_arr.push(x)
       end
       redirect_to "/cock_recommend/result"
       return
     end
     
-    if temp.length == 0
+    if $recommend_arr.length == 0
       $current_state = "amount"
       redirect_to "/cock_recommend/warning"
       return
