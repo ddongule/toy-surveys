@@ -19,13 +19,13 @@ class CockRecommendController < ApplicationController
   
   def warning_update
 
-    if current_state == "taste"
+    if $current_state == "taste"
       redirect_to "/cock_recommend/alcohol"
       return
-    elsif current_state == "alcohol"
+    elsif $current_state == "alcohol"
       redirect_to "/cock_recommend/amount"
       return
-    elsif current_state == "amount"
+    elsif $current_state == "amount"
       redirect_to "/cock_recommend/challenge"
       return
     else
@@ -150,7 +150,7 @@ class CockRecommendController < ApplicationController
         return
       else  # 3개 초과면 그걸가지고 다음 단계 진행
         $recommend_arr = Array.new(taste_temp)
-      end
+      end  
     end 
     redirect_to "/cock_recommend/alcohol"
   end
@@ -167,14 +167,14 @@ class CockRecommendController < ApplicationController
 
     temp.each do |cocktail|
     #  for i in 0..@cocktail_all.length-1
-        if $user_alcohol[0].to_i == 1 and cocktail.alcohol.to_1 != 1 # 논알콜일 때 알콜이 1이 아닌 애들 다 제거
+        if $user_alcohol[0].to_i == 1 and cocktail.alcohol.to_i != 1 # 논알콜일 때 알콜이 1이 아닌 애들 다 제거
           # logger.debug "cocktail : #{cocktail.name}, if문 : 1"
           $trash.push(cocktail)
         #  temp.delete(cocktail)
-        elsif $user_alcohol[0].to_i == 2 and cocktail.alcohol.to_1 != 2 and cocktail.alcohol.to_1 != 3 # 도수 2일 때 2,3 제외하고 다 제거
+        elsif $user_alcohol[0].to_i == 2 and cocktail.alcohol.to_i != 2 and cocktail.alcohol.to_i != 3 # 도수 2일 때 2,3 제외하고 다 제거
           # logger.debug "cocktail : #{cocktail.name}, if문 : 1"
           $trash.push(cocktail)
-        elsif $user_alcohol[0].to_i == 8 and cocktail.alcohol.to_1 == 1 # 도수 8, 상관없을 때 1(논알콜)은 제거
+        elsif $user_alcohol[0].to_i == 8 and cocktail.alcohol.to_i == 1 # 도수 8, 상관없을 때 1(논알콜)은 제거
           # logger.debug "cocktail : #{cocktail.name}, if문 : 1"
           $trash.push(cocktail)
         else
@@ -280,15 +280,15 @@ class CockRecommendController < ApplicationController
     # 도전
     if $user_challenge.include?("상관없음")
       if $recommend_arr.length >3 # 전체가 3개 초과일 때 랜덤으로
-        temp = $recommend_arr.sample(1)
+        temp = $recommend_arr.sample(1)[0]
         $result_arr.push(temp)
         $recommend_arr.delete(temp)
 
-        temp = $recommend_arr.sample(1)
+        temp = $recommend_arr.sample(1)[0]
         $result_arr.push(temp)
         $recommend_arr.delete(temp)
         
-        temp = $recommend_arr.sample(1)
+        temp = $recommend_arr.sample(1)[0]
         $result_arr.push(temp)
         $recommend_arr.delete(temp)
         
@@ -330,6 +330,7 @@ class CockRecommendController < ApplicationController
           temp = $recommend_arr.sample(1)[0]
           $result_arr.push(temp)
           $recommend_arr.delete(temp)
+
         elsif $recommend_arr.length == 1
           temp = $recommend_arr.sample(1)[0]
           $result_arr.push(temp)
