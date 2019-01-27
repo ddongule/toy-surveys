@@ -56,6 +56,7 @@ class CockRecommendController < ApplicationController
 
     $trash.each do |x|
       $recommend_arr.delete(x)
+
     end
     $trash.clear
 
@@ -175,11 +176,13 @@ class CockRecommendController < ApplicationController
           # logger.debug "cocktail : #{cocktail.name}, if문 : 1"
           $trash.push(cocktail)
         elsif $user_alcohol[0].to_i == 8 and cocktail.alcohol.to_i == 1 # 도수 8, 상관없을 때 1(논알콜)은 제거
-          # logger.debug "cocktail : #{cocktail.name}, if문 : 1"
+          #logger.debug "cocktail : #{cocktail.name}, if문 : 1" 
           $trash.push(cocktail)
+        elsif $user_alcohol[0].to_i == 8 and cocktail.alcohol.to_i != 1 # 도수 8, 상관없을 때 1(논알콜)이외의 것들은 skip하며 예외처리
+          next
         else
           if cocktail.alcohol.to_i < $user_alcohol[0].to_i-1 or cocktail.alcohol.to_i > $user_alcohol[0].to_i+1 # 나머지 경우 유저가 선택한 도수 +,-1 인거 제외하고 다 제거
-            # logger.debug "cocktail : #{cocktail.name}, if문 : 1"
+            #logger.debug "cocktail : #{cocktail.name}, if문 : 3~7"
             $trash.push(cocktail)
           end
         end
@@ -187,7 +190,7 @@ class CockRecommendController < ApplicationController
     end
     
     $trash.each do |x|
-      # logger.debug "삭제할 cocktail : #{x.name}"
+      #logger.debug "삭제할 cocktail : #{x.name}" 
       $recommend_arr.delete(x)
     end
     $trash.clear
