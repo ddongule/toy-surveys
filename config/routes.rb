@@ -10,8 +10,6 @@ Rails.application.routes.draw do
 
   get 'cock_recommend/cocktail/warning_update'
 
-  get 'cocktail/warning_update'
-
   get 'cock_recommend/avoid'
 
   get 'cock_recommend/avoid_update'

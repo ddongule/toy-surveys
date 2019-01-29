@@ -1,3 +1,19 @@
+<head>
+<script type="text/javascript">
+  function noEvent() { // 새로 고침 방지
+      if (event.keyCode == 116) {
+          alert("새로 고침하여 메인 페이지로 이동합니다.");
+          window.location.href = '/'
+          event.keyCode = 2;
+          return false;
+      } else if (event.ctrlKey
+              && (event.keyCode == 78 || event.keyCode == 82)) {
+          return false;
+      }
+  }
+document.onkeydown = noEvent;
+</script>
+</head>
 
 <form action = '/cock_recommend/taste_update' method = "get">
   <p>2. 선호하는 맛을 골라주세요!</p>
@@ -12,6 +28,6 @@
   <input type = 'submit' value = '다음'></input>
   ///////////////
 <% $recommend_arr.each do |x| %>
-<%= x.name %></br>
-<%end%>
+  <%= x.name %></br>
+<% end %>
 </form>
