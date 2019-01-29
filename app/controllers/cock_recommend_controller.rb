@@ -52,6 +52,14 @@ class CockRecommendController < ApplicationController
     $user_avoid = params[:avoid]
     @cocktail_all = Cocktail.all()
     $recommend_arr = Array.new(@cocktail_all)
+
+    #선택 안하면 넘어가게해야함
+    if $user_avoid.blank?
+      redirect_to "/cock_recommend/taste"
+      return
+    end
+
+
     # 싫어하는 재료가 있는 칵테일 제거
     $recommend_arr.each do |cocktail|
       for i in 0..$user_avoid.length-1
@@ -79,6 +87,12 @@ class CockRecommendController < ApplicationController
 
   def taste_update
     $user_taste = params[:taste]
+
+    #선택 안하면 넘어가게해야함
+    if $user_taste.blank?
+      redirect_to "/cock_recommend/alcohol"
+      return
+    end
 
     # 맛으로 필터링
     user_taste_sweet_sugar = 0
@@ -219,6 +233,12 @@ class CockRecommendController < ApplicationController
   def alcohol_update
     $user_alcohol = params[:alcohol]
     
+    #선택 안하면 넘어가게해야함
+    if $user_alcohol.blank?
+      redirect_to "/cock_recommend/amount"
+      return
+    end
+
     $trash.clear
     # 도수
     temp = Array.new($recommend_arr)
@@ -276,6 +296,13 @@ class CockRecommendController < ApplicationController
 
   def amount_update
     $user_amount = params[:amount]
+
+
+    #선택 안하면 넘어가게해야함
+    if $user_amount.blank?
+      redirect_to "/cock_recommend/challenge"
+      return
+    end
 
     temp = Array.new($recommend_arr)
     $trash.clear
@@ -337,6 +364,24 @@ class CockRecommendController < ApplicationController
 
   def challenge_update
     $user_challenge = params[:challenge]
+
+    #선택 안하면 랜덤 세개를 넣어서 결과창으로 바로 보낸다
+    if $user_challenge.blank?
+
+      temp = $recommend_arr.sample(1)[0]
+        $result_arr.push(temp)
+        $recommend_arr.delete(temp)
+
+        temp = $recommend_arr.sample(1)[0]
+        $result_arr.push(temp)
+        $recommend_arr.delete(temp)
+        
+        temp = $recommend_arr.sample(1)[0]
+        $result_arr.push(temp)
+        $recommend_arr.delete(temp)
+      redirect_to "/cock_recommend/result"
+      return
+    end
 
     $show_test = Array.new($recommend_arr)
     # 도전
