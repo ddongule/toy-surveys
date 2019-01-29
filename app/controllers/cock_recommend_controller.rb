@@ -57,6 +57,7 @@ class CockRecommendController < ApplicationController
       redirect_to "/cock_recommend/amount"
       return
     else
+      redirect_to "/"
     end
   end
 
