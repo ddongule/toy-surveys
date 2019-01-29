@@ -1,3 +1,20 @@
+<head>
+<script type="text/javascript">
+  function noEvent() { // 새로 고침 방지
+      if (event.keyCode == 116) {
+          alert("새로 고침하여 메인 페이지로 이동합니다.");
+          window.location.href = '/'
+          event.keyCode = 2;
+          return false;
+      } else if (event.ctrlKey
+              && (event.keyCode == 78 || event.keyCode == 82)) {
+          return false;
+      }
+  }
+document.onkeydown = noEvent;
+</script>
+</head>
+
 <form action = '/cock_recommend/alcohol_update' method = "get">
 
 <p>3. 마셔마셔 먹고 디져~</p>

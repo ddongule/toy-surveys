@@ -10,7 +10,7 @@ class CockRecommendController < ApplicationController
   $debug = Array.new(5)
   $trash = Array.new
   $current_state = "/"
-
+  
   def index
   end
 
@@ -33,7 +33,17 @@ class CockRecommendController < ApplicationController
     
   end
 
+  def back_before
+    if $current_state == "taste"
+    elsif $current_state == "alcohol"
+    elsif $current_state == "amount"
+    elsif $current_state == "challenge"
+    else
+    end
+  end
+
   def avoid
+    $current_state = "avoid"
     $result_arr = Array.new
     $recommend_arr = Array.new
   end
@@ -42,6 +52,14 @@ class CockRecommendController < ApplicationController
     $user_avoid = params[:avoid]
     @cocktail_all = Cocktail.all()
     $recommend_arr = Array.new(@cocktail_all)
+
+    #선택 안하면 넘어가게해야함
+    if $user_avoid.blank?
+      redirect_to "/cock_recommend/taste"
+      return
+    end
+
+
     # 싫어하는 재료가 있는 칵테일 제거
     $recommend_arr.each do |cocktail|
       for i in 0..$user_avoid.length-1
@@ -64,11 +82,17 @@ class CockRecommendController < ApplicationController
   end
 
   def taste
-
+    $current_state = "taste"
   end
 
   def taste_update
     $user_taste = params[:taste]
+
+    #선택 안하면 넘어가게해야함
+    if $user_taste.blank?
+      redirect_to "/cock_recommend/alcohol"
+      return
+    end
 
     # 맛으로 필터링
     user_taste_sweet_sugar = 0
@@ -97,6 +121,52 @@ class CockRecommendController < ApplicationController
       ok = false
       count = 0
       target = 4
+
+      taste_temp = Array.new
+      # 맛이 1개일 때 해당 맛이 없는 애들 제거
+      if user_taste_sweet_sugar+user_taste_sweet_fruit+user_taste_fresh+user_taste_bitters_fruit+user_taste_bitters_drink == 1
+        
+        if $user_taste[0] == "단맛_설탕"
+          $recommend_arr.each do |cocktail|
+            if cocktail.taste_sweet_sugar != 1
+              taste_temp.push(cocktail)  
+            end
+          end         
+        elsif $user_taste[0] == "단맛_과일"
+          $recommend_arr.each do |cocktail|
+            if cocktail.taste_sweet_fruit != 1
+              taste_temp.push(cocktail)  
+            end
+          end
+        elsif $user_taste[0] == "상큼"
+          $recommend_arr.each do |cocktail|
+            if cocktail.taste_fresh != 1
+              taste_temp.push(cocktail)  
+            end
+          end
+        elsif $user_taste[0] == "쓴맛_과일"
+          $recommend_arr.each do |cocktail|
+            if cocktail.taste_bitters_fruit != 1
+              taste_temp.push(cocktail)  
+            end
+          end
+        else
+          $recommend_arr.each do |cocktail|
+            if cocktail.taste_bitters_drink != 1
+              taste_temp.push(cocktail)  
+            end
+          end
+        end
+
+        taste_temp.each do |cocktail|
+          $recommend_arr.delete(cocktail)
+        end
+      end
+
+      if $user_taste[0] == "쓴맛_과일"
+        redirect_to "/cock_recommend/alcohol"
+        return
+      end
 
       while target > 0 and (not ok)
         taste_temp = Array.new
@@ -157,11 +227,18 @@ class CockRecommendController < ApplicationController
   end
 
   def alcohol
+    $current_state = "alcohol"
   end
 
   def alcohol_update
     $user_alcohol = params[:alcohol]
     
+    #선택 안하면 넘어가게해야함
+    if $user_alcohol.blank?
+      redirect_to "/cock_recommend/amount"
+      return
+    end
+
     $trash.clear
     # 도수
     temp = Array.new($recommend_arr)
@@ -214,10 +291,18 @@ class CockRecommendController < ApplicationController
   end
 
   def amount
+    $current_state = "amount"
   end
 
   def amount_update
     $user_amount = params[:amount]
+
+
+    #선택 안하면 넘어가게해야함
+    if $user_amount.blank?
+      redirect_to "/cock_recommend/challenge"
+      return
+    end
 
     temp = Array.new($recommend_arr)
     $trash.clear
@@ -274,10 +359,29 @@ class CockRecommendController < ApplicationController
   end
 
   def challenge
+    $current_state = "challenge"
   end
 
   def challenge_update
     $user_challenge = params[:challenge]
+
+    #선택 안하면 랜덤 세개를 넣어서 결과창으로 바로 보낸다
+    if $user_challenge.blank?
+
+      temp = $recommend_arr.sample(1)[0]
+        $result_arr.push(temp)
+        $recommend_arr.delete(temp)
+
+        temp = $recommend_arr.sample(1)[0]
+        $result_arr.push(temp)
+        $recommend_arr.delete(temp)
+        
+        temp = $recommend_arr.sample(1)[0]
+        $result_arr.push(temp)
+        $recommend_arr.delete(temp)
+      redirect_to "/cock_recommend/result"
+      return
+    end
 
     $show_test = Array.new($recommend_arr)
     # 도전
