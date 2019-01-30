@@ -1,3 +1,31 @@
 // Place all the styles related to the cock_recommend controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.intro .intro-wrap .start-btn {
+    transition: all 0.3s ease 0s;
+    width: 280px;
+    margin: 0 auto;
+    position: relative;
+    top: 0px;
+    text-align: center;
+    color: #fff;
+    color: rgba(255,255,255,1);
+    cursor: pointer;
+    border-radius: 7px;
+    line-height: 28px;
+    font-weight: 200;
+    padding: 20px 0;
+    background: #ffa3a3;
+    background: linear-gradient(150deg,#ffa3a3 26%,#ffca09);
+    /* background: linear-gradient(150deg,rgba(0, 6, 59, 0.5) 26%,rgba(49, 81, 255, 0.5)); */
+    /* background: rgba(255,255,255,0.05); */
+    box-shadow: 0px 0px 10px rgba(255, 50, 49, 0.5);
+    form{
+      input {
+        color:#fff;
+        font-size: 1em;
+      }
+    }
+}
+
