@@ -1,17 +1,19 @@
 <head>
 <script type="text/javascript">
-  function noEvent() { // 새로 고침 방지
-      if (event.keyCode == 116) {
-          alert("새로 고침하여 메인 페이지로 이동합니다.");
-          window.location.href = '/'
-          event.keyCode = 2;
-          return false;
-      } else if (event.ctrlKey
-              && (event.keyCode == 78 || event.keyCode == 82)) {
-          return false;
-      }
-  }
+
+function noEvent() { // 새로 고침 방지
+    if (event.keyCode == 116) {
+        alert("새로 고침하여 메인 페이지로 이동합니다.");
+        window.location.href = '/'
+        event.keyCode = 2;
+        return false;
+    } else if (event.ctrlKey
+            && (event.keyCode == 78 || event.keyCode == 82)) {
+        return false;
+    }
+}
 document.onkeydown = noEvent;
+
 </script>
 </head>
 
@@ -32,8 +34,7 @@ document.onkeydown = noEvent;
 <input type="checkbox" name="avoid[]" value="상관없음">상관없음 </br>
 
 <input type = 'submit' value = '다음'></input>
-
-///////////////
+///////////////</br>
 <% $recommend_arr.each do |x| %>
 <%= x.name %></br>
 <%end%>

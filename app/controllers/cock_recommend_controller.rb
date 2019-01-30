@@ -11,6 +11,12 @@ class CockRecommendController < ApplicationController
   $trash = Array.new
   $current_state = "/"
   
+  $avoid_arr = Array.new
+  $taste_arr = Array.new
+  $alcohol_arr = Array.new
+  $amount_arr = Array.new
+  $challenge_arr = Array.new
+
   def index
   end
 
@@ -35,10 +41,23 @@ class CockRecommendController < ApplicationController
 
   def back_before
     if $current_state == "taste"
+      $recommend_arr = $avoid_arr
+      redirect_to "/cock_recommend/avoid"
+      return
     elsif $current_state == "alcohol"
+      $recommend_arr = $taste_arr
+      redirect_to "/cock_recommend/taste"
+      return
     elsif $current_state == "amount"
+      $recommend_arr = $alcohol_arr
+      redirect_to "/cock_recommend/alcohol"
+      return
     elsif $current_state == "challenge"
+      $recommend_arr = $amount_arr
+      redirect_to "/cock_recommend/amount"
+      return
     else
+      redirect_to "/"
     end
   end
 
@@ -52,7 +71,7 @@ class CockRecommendController < ApplicationController
     $user_avoid = params[:avoid]
     @cocktail_all = Cocktail.all()
     $recommend_arr = Array.new(@cocktail_all)
-
+    $avoid_arr = Array.new($recommend_arr)
     #선택 안하면 넘어가게해야함
     if $user_avoid.blank?
       redirect_to "/cock_recommend/taste"
@@ -83,6 +102,7 @@ class CockRecommendController < ApplicationController
 
   def taste
     $current_state = "taste"
+    $taste_arr = Array.new($recommend_arr)
   end
 
   def taste_update
@@ -228,6 +248,7 @@ class CockRecommendController < ApplicationController
 
   def alcohol
     $current_state = "alcohol"
+    $alcohol_arr = Array.new($recommend_arr)
   end
 
   def alcohol_update
@@ -292,6 +313,7 @@ class CockRecommendController < ApplicationController
 
   def amount
     $current_state = "amount"
+    $amount_arr = Array.new($recommend_arr)
   end
 
   def amount_update
@@ -360,6 +382,7 @@ class CockRecommendController < ApplicationController
 
   def challenge
     $current_state = "challenge"
+    $challenge_arr = Array.new($recommend_arr)
   end
 
   def challenge_update
