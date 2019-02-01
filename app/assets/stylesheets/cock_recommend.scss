@@ -61,9 +61,9 @@ label {
       // border: 2px solid black;
       border-radius: 50%;
       vertical-align: -6px;
-      margin-right: 10px;
+      margin: 0.5em;
       transition: background-color 150ms 200ms, transform 350ms cubic-bezier(.78,-1.22,.17,1.89); // custom ease effect for bouncy animation
-  
+      font-size: 2em;
   // Now we'll create the "tick" using pseudo elements - those will be basically two lines that will be rotated to form the "tick"
   
     &:before {
@@ -88,8 +88,11 @@ label {
       background: transparent;
       position: absolute;
       transform: rotate(305deg);
-      top: 16px; // you'll need to experiment with placement depending on the dimensions you've chosen
-      left: 10px; // you'll need to experiment with placement depending on the dimensions you've chosen
+      top: 23.5px;
+      left: 18px;
+
+      //top: 16px; // you'll need to experiment with placement depending on the dimensions you've chosen
+      //left: 10px; // you'll need to experiment with placement depending on the dimensions you've chosen
       transition: width 50ms ease;
       transform-origin: 0% 0%;
     }
@@ -123,13 +126,13 @@ input[type="checkbox"] {
         transform: scale(1.25); // enlarge the box
         
         &:after {
-          width: 10px;
+          width: 0.5em;
           background: #ffcd60;
           transition: width 150ms ease 100ms; // enlarge the tick
         }
         
         &:before {
-          width: 5px;
+          width: 0.5em;
           background: #ffcd60;
           transition: width 150ms ease 100ms; // enlarge the tick
         }
@@ -141,13 +144,13 @@ input[type="checkbox"] {
           transform: scale(1.25); // enlarge the box
 
           &:after {
-            width: 10px;
+            width: 0.5em;
             background: #ffcd60;
             transition: width 150ms ease 100ms; // enlarge the tick
           }
 
           &:before {
-            width: 5px;
+            width: 0.5em;
             background: #ffcd60;
             transition: width 150ms ease 100ms; // enlarge the tick
           }
