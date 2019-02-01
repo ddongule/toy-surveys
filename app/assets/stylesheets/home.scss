@@ -1,12 +1,13 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,100,900);
+@font-face { font-family: 'UhBeemysen'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_five@.2.0/UhBeemysen.woff') format('woff'); font-weight: normal; font-style: normal; }
 
 .title {
   text-align: center;
-  margin: 3em 0 0 0;
+  // margin: 3em 0 0 0;
 }
 .title1 {
   text-align: center;
-  margin: 1em;
+  // margin: 1em;
 }
 
 //colors
@@ -22,16 +23,21 @@ $white: #fff;
   transition-timing-function: ease;
 }
 
-html,
-body {
-  box-sizing: border-box;
-  height: 100%;
-  width: 100%;
+html{
+  margin: 5%;
+  height: 90%;
+  width: auto;
+  body {
+    box-sizing: border-box;
+    height: 80%;
+    margin: 100px;
+    width: auto;
+  }
 }
 
 body {
   background: $white;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'UhBeemysen', sans-serif;
   font-weight: 400;
 }
 
@@ -39,7 +45,7 @@ body {
 .buttons {
     display: flex;
     flex-direction: column;
-    height: 50%;
+    height: 100%;
     justify-content: center;
     text-align: center;
     width: 100%;

@@ -1,7 +1,9 @@
 // Place all the styles related to the cock_recommend controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
+input {
+  font-family: 'UhBeemysen';
+}
 .intro .intro-wrap .start-btn {
     transition: all 0.3s ease 0s;
     width: 280px;
@@ -12,7 +14,7 @@
     color: #fff;
     color: rgba(255,255,255,1);
     cursor: pointer;
-    border-radius: 7px;
+    border-radius: 5em;
     line-height: 28px;
     font-weight: 200;
     padding: 20px 0;
@@ -24,7 +26,7 @@
     form{
       input {
         color:#fff;
-        font-size: 1em;
+        font-size: 4em;
       }
     }
 }
