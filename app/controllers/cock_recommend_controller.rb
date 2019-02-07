@@ -326,13 +326,12 @@ class CockRecommendController < ApplicationController
       return
     end
 
-    temp = Array.new($recommend_arr)
     $trash.clear
 
     # logger.debug "양"
 
      # 양
-    temp.each do |cocktail|
+    $recommend_arr.each do |cocktail|
       #for i in 0..@cocktail_all.length-1
         if $user_amount[0].to_i == 1 and cocktail.amount != 1 and cocktail.amount != 2 # 1일 땐 1,2만
           $trash.push(cocktail)
@@ -342,7 +341,7 @@ class CockRecommendController < ApplicationController
           # logger.debug "cocktail : #{cocktail.name}, if문 : 2"
           $trash.push(cocktail)
 
-        elsif $user_amount[0].to_i == 3 and (cocktail.amount < 2 or cocktail.amount > 4) # 3일때는 2,3,4만
+        elsif $user_amount[0].to_i == 3 and cocktail.amount == 1 # 3일때는 2,3,4만
           # logger.debug "cocktail : #{cocktail.name}, if문 : 3"
           $trash.push(cocktail)
         
