@@ -330,7 +330,7 @@ class CockRecommendController < ApplicationController
 
     # logger.debug "양"
 
-     # 양
+    # 양
     $recommend_arr.each do |cocktail|
       #for i in 0..@cocktail_all.length-1
         if $user_amount[0].to_i == 1 and cocktail.amount != 1 and cocktail.amount != 2 # 1일 땐 1,2만
