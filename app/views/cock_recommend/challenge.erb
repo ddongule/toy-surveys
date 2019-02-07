@@ -1,3 +1,20 @@
+<head>
+<script type="text/javascript">
+  function noEvent() { // 새로 고침 방지
+      if (event.keyCode == 116) {
+          alert("새로 고침하여 메인 페이지로 이동합니다.");
+          window.location.href = '/'
+          event.keyCode = 2;
+          return false;
+      } else if (event.ctrlKey
+              && (event.keyCode == 78 || event.keyCode == 82)) {
+          return false;
+      }
+  }
+document.onkeydown = noEvent;
+</script>
+</head>
+
 <form action = '/cock_recommend/challenge_update' method = "get">
 
 <p>5. 아래 항목 중 도전해보고 싶은거 있어요?</p>
@@ -7,10 +24,11 @@
 <input type="checkbox" name="challenge[]" value="상관없음">상관없음 </br>
 
 <input type = 'submit' value = '다음'></input>
-
-///////////////
+<a href = '/cock_recommend/back_before'>이전 선택지로 돌아가기</a></br>
+///////////////</br>
 <% $recommend_arr.each do |x| %>
 <%= x.name %></br>
 <%end%>
 
 </form>
+

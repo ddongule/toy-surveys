@@ -1,8 +1,13 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,100,900);
+@font-face { font-family: 'UhBeemysen'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_five@.2.0/UhBeemysen.woff') format('woff'); font-weight: normal; font-style: normal; }
 
 .title {
   text-align: center;
-  margin: 3em 0 0 0;
+  // margin: 3em 0 0 0;
+}
+.title1 {
+  text-align: center;
+  // margin: 1em;
 }
 
 //colors
@@ -18,16 +23,21 @@ $white: #fff;
   transition-timing-function: ease;
 }
 
-html,
-body {
-  box-sizing: border-box;
-  height: 100%;
-  width: 100%;
+html{
+  margin: 5%;
+  height: 90%;
+  width: auto;
+  body {
+    box-sizing: border-box;
+    height: 80%;
+    margin: 100px;
+    width: auto;
+  }
 }
 
 body {
   background: $white;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'UhBeemysen', sans-serif;
   font-weight: 400;
 }
 
@@ -35,7 +45,7 @@ body {
 .buttons {
     display: flex;
     flex-direction: column;
-    height: 50%;
+    height: 100%;
     justify-content: center;
     text-align: center;
     width: 100%;
@@ -78,14 +88,14 @@ h1 {
 }
 
 p {
-  color: $red;
-  font-size: 12px;
-  
+  color: $red;  
+  font-size: 3em;
   @media(min-width: 600px) {
     left: 50%;
-    position: absolute; 
+    // position: absolute; 
+    position: relative;
+    top: 10%;
     transform: translate(-50%, 0);
-    top: 90%;
   }
   
   @media(max-height: 500px) {
@@ -160,15 +170,18 @@ p {
 //////////////////////////
 .btn-2 {
     letter-spacing: 0;
+    font-weight: 600;
 }
 
 .btn-2:hover,
 .btn-2:active {
   letter-spacing: 5px;
+  font-weight: 600;
 }
 
 .btn-2:after,
 .btn-2:before {
+  font-weight: 600;
   backface-visibility: hidden;
   border: 1px solid rgba(#fff, 0);
   bottom: 0px;
@@ -182,7 +195,10 @@ p {
 
 .btn-2:hover:after,
 .btn-2:hover:before {
+  font-weight: 600;
   backface-visibility: hidden;
+  border-top-width: thin;
+  border-bottom-width: thin;
   border-color: $red;
   transition: width 350ms ease-in-out;
   width: 100%;
@@ -190,6 +206,7 @@ p {
 
 .btn-2:hover:before {
   bottom: auto;
+  font-weight: 600;
   top: 0;
   width: 70%;
 }
