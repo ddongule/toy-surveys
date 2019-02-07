@@ -41,6 +41,7 @@ input {
     vertical-align: middle; // to center the item
     text-align: center; // to center the item
   }
+  
 }
 
 label {
@@ -116,7 +117,7 @@ label {
 
 input[type="checkbox"] {
     display: none; // hide the system checkbox
-  
+
   // Let's add some effects after the checkbox is checked
   
   &:checked {
@@ -160,4 +161,50 @@ input[type="checkbox"] {
   }
 }
 
+
+input[type="radio"] {
+    display: none; // hide the system checkbox
+
+  // Let's add some effects after the checkbox is checked
+  
+  &:checked {
+    + label {
+      span {
+        background-color: #fff;
+        transform: scale(1.25); // enlarge the box
+        
+        &:after {
+          width: 0.5em;
+          background: #ffcd60;
+          transition: width 150ms ease 100ms; // enlarge the tick
+        }
+        
+        &:before {
+          width: 0.5em;
+          background: #ffcd60;
+          transition: width 150ms ease 100ms; // enlarge the tick
+        }
+      }
+      
+      &:hover { // copy the states for onMouseOver to avoid flickering
+        span {
+          background-color: #fff;
+          transform: scale(1.25); // enlarge the box
+
+          &:after {
+            width: 0.5em;
+            background: #ffcd60;
+            transition: width 150ms ease 100ms; // enlarge the tick
+          }
+
+          &:before {
+            width: 0.5em;
+            background: #ffcd60;
+            transition: width 150ms ease 100ms; // enlarge the tick
+          }
+        }  
+      }
+    }
+  }
+}
 
