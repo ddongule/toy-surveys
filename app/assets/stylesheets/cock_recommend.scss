@@ -5,7 +5,7 @@ input {
   font-size: 4em;
   font-family: "UhBeemysen";
 }
-.intro .intro-wrap .start-btn {
+.intro .intro-wrap {
     transition: all 0.3s ease 0s;
     width: 280px;
     margin: 0 auto;
@@ -26,7 +26,7 @@ input {
     box-shadow: 0px 0px 10px rgba(255, 50, 49, 0.5);
     form{
       font-size: 4em;
-      input {
+      input[type="submit"] {
         color:#fff;
         font-family: "UhBeemysen";
         font-size: 1em;
