@@ -26,6 +26,7 @@ input {
     box-shadow: 0px 0px 10px rgba(255, 50, 49, 0.5);
     form{
       font-size: 4em;
+      text-align: center;
       input[type="submit"] {
         color:#fff;
         font-family: "UhBeemysen";
@@ -37,6 +38,8 @@ input {
 
 .exp {
   display: table; // to center the item
+  margin: 5%;
+  justify-content: center;
   .checkbox {
     vertical-align: middle; // to center the item
     text-align: center; // to center the item

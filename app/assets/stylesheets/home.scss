@@ -30,8 +30,11 @@ html{
   body {
     box-sizing: border-box;
     height: 80%;
-    margin: 100px;
+    margin: 10%;
     width: auto;
+    display: flex;
+    justify-content: center;
+    
   }
 }
 
