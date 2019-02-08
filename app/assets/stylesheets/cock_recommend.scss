@@ -43,6 +43,9 @@ input {
   .checkbox {
     vertical-align: middle; // to center the item
     text-align: center; // to center the item
+    form {
+      display: grid;
+    }
   }
   
 }
