@@ -1,0 +1,68 @@
+<head>
+  <script type="text/javascript">
+    function noEvent() { // 새로 고침 방지
+        if (event.keyCode == 116) {
+            alert("새로 고침하여 메인 페이지로 이동합니다.");
+            window.location.href = '/'
+            event.keyCode = 2;
+            return false;
+        } else if (event.ctrlKey
+                && (event.keyCode == 78 || event.keyCode == 82)) {
+            return false;
+        }
+    }
+  document.onkeydown = noEvent;
+  </script>
+</head>
+
+<div class="exp">
+  <div class="checkbox">
+    <form action = '/cock_recommend/taste_update' method = "get">
+      <p>2. 선호하는 맛을 골라주세요!</p>
+
+      <input id="taste" type="checkbox" name="taste[]" value="단맛_설탕">
+        <label for="taste"> 
+          <span>단맛(설탕)</span>
+        </label>
+      </input>
+
+      <input id="taste1" type="checkbox" name="taste[]" value="단맛_과일">
+        <label for="taste1"> 
+          <span>단맛(과일)</span>
+        </label>
+      </input>
+
+      <input id="taste2" type="checkbox" name="taste[]" value="상큼">
+        <label for="taste2"> 
+          <span>상큼(새콤,달콤)</span>
+        </label>
+      </input>
+
+      <input id="taste3" type="checkbox" name="taste[]" value="쓴맛_과일">
+        <label for="taste3"> 
+          <span>쓴맛(과일)</span>
+        </label>
+      </input>
+
+      <input id="taste4" type="checkbox" name="taste[]" value="쓴맛_술">
+        <label for="taste4"> 
+          <span>쓴맛(술)</span>
+        </label>
+      </input>
+
+      <input id="taste5" type="checkbox" name="taste[]" value="상관없음">
+        <label for="taste5"> 
+          <span>상관없음</span>
+        </label>
+      </input>
+
+      <br> <br> <br> <br> <br> 
+      <input type = 'submit' value = '다음'></input>
+      <a href = '/cock_recommend/back_before'>이전 선택지로 돌아가기</a></br>
+      ///////////////</br>
+      <% $recommend_arr.each do |x| %>
+        <%= x.name %></br>
+      <% end %>
+    </form>
+  </div>
+</div>
