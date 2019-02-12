@@ -128,7 +128,6 @@ p {
     line-height: 1.4;
     padding: .25em;
     text-decoration: none;
-    
     &:hover {
       background: rgba($red, 1);
       color: $white;
@@ -215,7 +214,8 @@ p {
   backface-visibility: hidden;
   border-top-width: thin;
   border-bottom-width: thin;
-  border-color: $red;
+  // border-color: $red;
+  border-color: #ead084;
   transition: width 350ms ease-in-out;
   width: 100%;
 }
