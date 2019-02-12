@@ -28,7 +28,7 @@ input {
   outline:none;
   height: 10%;
   text-align: center;
-  width: 100%;
+  width: 30%;
   border-radius:40px;
   background: transparent;
   border: 2px solid $pink;
@@ -38,9 +38,10 @@ input {
   text-decoration: none;
   text-shadow: 3px 3px 30px #ead084;
   margin: 2em 0;
+  padding: 1em;
   box-shadow: 0px 0px 15px 3px #d93e60;
   font:{
-    size:1em;
+    size:1.5em;
     weight:bold;
   }
   cursor: pointer;
