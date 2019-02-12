@@ -105,7 +105,7 @@ h1 {
 
 p {
   color: $red;  
-  font-size: 3em;
+  font-size: 1em;
   @media(min-width: 600px) {
     left: 50%;
     // position: absolute; 
@@ -154,7 +154,7 @@ $yellow: #ead084;
   margin: 2em 0;
   box-shadow: 0px 0px 15px 3px #d93e60;
   font:{
-    size:2em;
+    size:1em;
     weight:bold;
   }
   cursor: pointer;
