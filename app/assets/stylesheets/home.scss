@@ -23,7 +23,7 @@
 }
 
 //colors
-$red: #d64e40;
+$red: #e8c91d;
 $white: #fff;
 
 //base styles
@@ -51,7 +51,8 @@ html{
 }
 
 body {
-  background: $white;
+  // background: $white;
+  background: #000000;
   font-family: 'Goyang', sans-serif;
   font-weight: 400;
 }

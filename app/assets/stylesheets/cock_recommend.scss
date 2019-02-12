@@ -45,6 +45,10 @@ input {
     text-align: center; // to center the item
     form {
       display: grid;
+      color: #fff;
+      a{
+        color: #fff;
+      }
     }
   }
   
@@ -71,6 +75,7 @@ label {
       margin: 0.5em;
       transition: background-color 150ms 200ms, transform 350ms cubic-bezier(.78,-1.22,.17,1.89); // custom ease effect for bouncy animation
       font-size: 2em;
+      color: #ffffff;
   // Now we'll create the "tick" using pseudo elements - those will be basically two lines that will be rotated to form the "tick"
   
     &:before {
@@ -129,7 +134,7 @@ input[type="checkbox"] {
   &:checked {
     + label {
       span {
-        background-color: #fff;
+        background-color: #000;
         transform: scale(1.25); // enlarge the box
         
         &:after {
@@ -147,7 +152,7 @@ input[type="checkbox"] {
       
       &:hover { // copy the states for onMouseOver to avoid flickering
         span {
-          background-color: #fff;
+          background-color: #000;
           transform: scale(1.25); // enlarge the box
 
           &:after {
@@ -176,7 +181,7 @@ input[type="radio"] {
   &:checked {
     + label {
       span {
-        background-color: #fff;
+        background-color: #000;
         transform: scale(1.25); // enlarge the box
         
         &:after {
@@ -194,7 +199,7 @@ input[type="radio"] {
       
       &:hover { // copy the states for onMouseOver to avoid flickering
         span {
-          background-color: #fff;
+          background-color: #000;
           transform: scale(1.25); // enlarge the box
 
           &:after {
