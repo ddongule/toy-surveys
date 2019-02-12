@@ -1,5 +1,17 @@
-@import url(https://fonts.googleapis.com/css?family=Roboto:400,100,900);
-@font-face { font-family: 'UhBeemysen'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_five@.2.0/UhBeemysen.woff') format('woff'); font-weight: normal; font-style: normal; }
+@font-face { 
+  font-family: 'Goyang'; 
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Goyang.woff') format('woff'); 
+  font-weight: normal; 
+  font-style: normal; 
+}
+
+
+.logo {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+}
 
 .title {
   text-align: center;
@@ -11,7 +23,7 @@
 }
 
 //colors
-$red: #ffcd60;
+$red: #d64e40;
 $white: #fff;
 
 //base styles
@@ -30,17 +42,17 @@ html{
   body {
     box-sizing: border-box;
     height: 80%;
-    margin: 10%;
+    margin: 5%;
     width: auto;
     display: flex;
     justify-content: center;
-    
+
   }
 }
 
 body {
   background: $white;
-  font-family: 'UhBeemysen', sans-serif;
+  font-family: 'Goyang', sans-serif;
   font-weight: 400;
 }
 
@@ -152,7 +164,7 @@ p {
   
   @media(min-width: 600px) {
       
-    margin: 0 1em 2em;
+    margin: 1em 2em;
   
 //     &:nth-of-type(even) {
 //       margin-right: 2.5em;
