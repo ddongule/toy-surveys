@@ -5,36 +5,15 @@
 =end%>
 
 <div class="container">
-<%
-=begin%>
- 
-  <table>
-      <thead>
-          <th>이름</th>
-          <th>탄산</th>
-          <th>기타</th>
-          <th>기주</th>
-      </thead>
-      <tbody>
-          <% @cocktails.each do |c| %>
-          <tr>
-              <td><%=c.name%></td>
-              <td><%=c.soda%></td>
-              <td><%=c.etc%></td>
-              <td><%=c.base%></td>
-          </tr>
-          <% end %>
-      </tbody>
-  </table> 
-<%
-=end%>
 
 
-
-  <div class="table-users">
+ <div class="table-users">
     <div class="header">칵테일들</div>
-    
-    <table cellspacing="0">
+	
+
+    <input type="search" class="light-table-filter" data-table="table-class" placeholder="Filter">
+
+    <table cellspacing="0" class="table table-striped table-class" id="all-cocktail">
       <thead>
         <tr>
           <th>사진</th>
@@ -58,4 +37,53 @@
     </table>
 
   </div>
-</div>
+</div>  
+
+
+
+
+
+
+<script>
+  (function(document) {
+    'use strict';
+
+    var LightTableFilter = (function(Arr) {
+
+      var _input;
+
+      function _onInputEvent(e) {
+        _input = e.target;
+        var tables = document.getElementsByClassName(_input.getAttribute('data-table'));
+        Arr.forEach.call(tables, function(table) {
+          Arr.forEach.call(table.tBodies, function(tbody) {
+            Arr.forEach.call(tbody.rows, _filter);
+          });
+        });
+      }
+
+      function _filter(row) {
+        var text = row.textContent.toLowerCase(), val = _input.value.toLowerCase();
+        row.style.display = text.indexOf(val) === -1 ? 'none' : 'table-row';
+      }
+
+      return {
+        init: function() {
+          var inputs = document.getElementsByClassName('light-table-filter');
+          Arr.forEach.call(inputs, function(input) {
+            input.oninput = _onInputEvent;
+          });
+        }
+      };
+    })(Array.prototype);
+
+    document.addEventListener('readystatechange', function() {
+      if (document.readyState === 'complete') {
+        LightTableFilter.init();
+      }
+    });
+
+  })(document);
+
+</script>
+ 
