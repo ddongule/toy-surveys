@@ -25,6 +25,10 @@ ActiveRecord::Schema.define(version: 20190118011408) do
     t.string "mouthfeel"
     t.string "base"
     t.boolean "soda"
+    t.string "about"
+    t.string "ment"
+    t.string "link"
+    t.string "photo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

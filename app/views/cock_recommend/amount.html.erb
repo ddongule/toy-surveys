@@ -16,20 +16,49 @@ document.onkeydown = noEvent;
 </head>
 
 
-<form action = '/cock_recommend/amount_update' method = "get">
+<div class="exp">
+  <div class="checkbox">
+    <form action = '/cock_recommend/amount_update' method = "get">
 
-<p>4. 꿀꺽꿀꺽 홀짝홀짝?</p>
-<input type="radio" name="amount" value="1">원샷</br>
-<input type="radio" name="amount" value="2">홀짝홀짝</br>
-<input type="radio" name="amount" value="3">꿀꺽꿀꺽</br>
-<input type="radio" name="amount" value="4">벌컥벌컥</br>
-<input type="radio" name="amount" value="5">상관없음</br>
+      <p>4. 꿀꺽꿀꺽 홀짝홀짝?(1가지 선택)</p>
+      <input id="amount" type="radio" name="amount" value="1">
+        <label for="amount">
+          <span>원샷</span>
+        </label>
+      </input>
 
-<input type = 'submit' value = '다음'></input>
-<a href = '/cock_recommend/back_before'>이전 선택지로 돌아가기</a></br>
-///////////////</br>
-<% $recommend_arr.each do |x| %>
-<%= x.name %></br>
-<%end%>
+      <input id="amount1" type="radio" name="amount" value="2">
+        <label for="amount1">
+          <span>홀짝홀짝</span>
+        </label>
+      </input>
 
-</form>
+      <input id="amount2" type="radio" name="amount" value="3">
+        <label for="amount2">
+          <span>꿀꺽꿀꺽</span>
+        </label>
+
+
+      <input id="amount3" type="radio" name="amount" value="4">
+        <label for="amount3">
+          <span>벌컥벌컥</span>
+        </label>
+      </input>
+
+      <input id="amount4" type="radio" name="amount" value="5">
+        <label for="amount4">
+          <span>상관없음</span>
+        </label>
+      </input>
+
+      <br><br><br><br><br>
+      <input type = 'submit' value = '다음'></input>
+      <a href = '/cock_recommend/back_before'>이전 선택지로 돌아가기</a></br>
+      ///////////////</br>
+      <% $recommend_arr.each do |x| %>
+        <%= x.name %></br>
+      <%end%>
+
+    </form>
+  </div>
+</div>

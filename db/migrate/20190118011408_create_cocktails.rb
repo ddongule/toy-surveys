@@ -13,6 +13,10 @@ class CreateCocktails < ActiveRecord::Migration[5.1]
       t.string :mouthfeel
       t.string :base
       t.boolean :soda
+      t.string :about
+      t.string :ment
+      t.string :link
+      t.string :photo
       
       t.timestamps
     end
