@@ -26,7 +26,7 @@
       <tbody>
         <% @cocktails.each do |c| %>
           <tr>
-            <td><%=c.soda%></td>
+            <td><%= image_tag ("#{c["photo"]}") %></td>
             <td><%=c.name%></td>
             <td><%=c.etc%></td>
             <td><%=c.base%></td>
@@ -38,11 +38,6 @@
 
   </div>
 </div>  
-
-
-
-
-
 
 <script>
   (function(document) {
