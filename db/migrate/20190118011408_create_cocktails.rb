@@ -16,6 +16,7 @@ class CreateCocktails < ActiveRecord::Migration[5.1]
       t.string :about
       t.string :ment
       t.string :link
+      t.string :photo
       
       t.timestamps
     end
