@@ -27,7 +27,7 @@ body {
    text-transform: uppercase;
 }
 
-img {
+.coc-img {
    border-radius: 50%;
    height: $imageSmall;
    width: $imageSmall;
@@ -73,6 +73,38 @@ table {
       &:nth-child(2n+1) { background-color: lighten($baseColor, 0%) }
    }
 }
+
+.btn3{
+  outline: none;
+  height: auto;
+  text-align: center;
+  width: 25%;
+  border-radius: 40px;
+  background: transparent;
+  border: 2px solid #d93e60;
+  color: #ead084;
+  letter-spacing: 1px;
+  text-shadow: 0;
+  text-decoration: none;
+  text-shadow: 3px 3px 30px #ead084;
+  margin: 2em 0;
+  padding: 1em;
+  box-shadow: 0px 0px 15px 3px #d93e60;
+  font-size: 1.5em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+
+
+
+
+
+
+
+
+
 
 @media screen and (max-width: 700px) {   
    table, tr, td { display: block; }
