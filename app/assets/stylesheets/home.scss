@@ -1,8 +1,8 @@
-@font-face { 
-  font-family: 'Goyang'; 
-  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Goyang.woff') format('woff'); 
-  font-weight: normal; 
-  font-style: normal; 
+@font-face {
+  font-family: 'Goyang';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Goyang.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
 }
 
 
@@ -68,14 +68,13 @@ body {
 }
 
 // Button wrap
-.container { 
+.container {
     align-items: center;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 1em;
-    text-align: center; 
-    
+    text-align: center;
+
     @media (min-width: 600px) {
         // flex-direction: row;
         flex-direction: column;
@@ -89,15 +88,15 @@ h1 {
   font-size: 1.25em;
   font-weight: 900;
   // margin: 0 0 2em;
-  
+
   @media (min-width: 450px) {
     font-size: 1.75em;
   }
-  
+
   @media (min-width: 760px) {
     font-size: 3.25em;
   }
-  
+
   @media (min-width: 900px) {
     font-size: 5.25em;
     margin: 0 0 1em;
@@ -105,23 +104,23 @@ h1 {
 }
 
 p {
-  color: $red;  
+  color: $red;
   font-size: 1em;
   @media(min-width: 600px) {
     left: 50%;
-    // position: absolute; 
+    // position: absolute;
     position: relative;
     top: 10%;
     transform: translate(-50%, 0);
   }
-  
+
   @media(max-height: 500px) {
     left: 0;
     position: relative;
     top: 0;
     transform: translate(0, 0);
   }
-  
+
   a {
     background: rgba($red, 0);
     border-bottom: 1px solid;
