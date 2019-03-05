@@ -16,6 +16,7 @@ class CockRecommendController < ApplicationController
   $alcohol_arr = Array.new
   $amount_arr = Array.new
   $challenge_arr = Array.new
+  $message_arr = Array.new(["무라카미 하루키의 '맛있는 칵테일을 만드는 법'이라는 글을 아시나요?", "제 머릿속에 떠오르는 칵테일이 몇 개 있네요.", "저도 오늘 영업이 끝나면 한잔하고 싶은 하루네요.", "맛있는 건 정말 참을 수 없어~", "오늘 하루 잘 보내셨나요?", "넷플릭스가 요즘 재미있더라구요.", "멋진 바에서 좋은 칵테일을 마시는 건 행복한 일이에요."])
 
   def index
   end
@@ -101,8 +102,27 @@ class CockRecommendController < ApplicationController
   end
 
   def taste
+    @taste_string = ""
     $current_state = "taste"
     $taste_arr = Array.new($recommend_arr)
+
+    if $user_avoid == nil
+      @taste_string = "꺼리시는 게 없네요? 좋아요."
+    elsif $user_avoid.include?("상관없음")
+      @taste_string = "꺼리시는 게 없네요? 좋아요."
+    elsif $user_avoid.include?("민트")
+      @taste_string = "민트는 치약 맛이죠." 
+    elsif $user_avoid.include?("커피")
+      @taste_string = "커피 맛 술인 깔루아에는 카페인이 들어있어서 마시면 잠이 잘 안 올 수 있어요."
+    elsif $user_avoid.include?("메론")
+      @taste_string = "메론 존맛탱인데 ㅋ"
+    elsif $user_avoid.include?("에너지드링크")
+      @taste_string = "맞아요. 에너지드링크 마시면 잠이 잘 안 오죠."
+    elsif $user_avoid.include?("생강")
+      @taste_string = "맛없어 퉤퉤"
+    else
+      @taste_string = "알러지 조심해요. 마음 아프니까."
+    end
   end
 
   def taste_update
@@ -249,6 +269,18 @@ class CockRecommendController < ApplicationController
   def alcohol
     $current_state = "alcohol"
     $alcohol_arr = Array.new($recommend_arr)
+    @taste_string = ""
+
+    if $user_taste == nil
+      @taste_string = "최고의 칵테일을 드릴게요!"
+    elsif $user_taste[0] == "쓴맛_술" and $user_taste.length == 1
+      @taste_string = "인생의 쓴맛을 아시는 분이군요."
+    elsif $user_taste[0] == "상큼" and $user_taste.length == 1
+      @taste_string = "상큼한 칵테일 한 잔은 기분전환에 좋죠."
+    else
+      @taste_string = $message_arr.sample(1)[0]
+    end
+      
   end
 
   def alcohol_update
@@ -314,6 +346,17 @@ class CockRecommendController < ApplicationController
   def amount
     $current_state = "amount"
     $amount_arr = Array.new($recommend_arr)
+    @alcohol_string = ""
+
+    if $user_alcohol == nil
+      @alcohol_string = "맛을 선택안하셨네요?"
+    elsif $user_alcohol.include?("1")
+      @alcohol_string = "알코올이 들어있지 않아도 분위기를 즐겁게 즐길 수 있어요."
+    elsif $user_alcohol.include?("7")
+      @alcohol_string = "오늘 집에 안 가려고요?"
+    else
+      @alcohol_string = $message_arr.sample(1)[0]
+    end
   end
 
   def amount_update
@@ -382,6 +425,17 @@ class CockRecommendController < ApplicationController
   def challenge
     $current_state = "challenge"
     $challenge_arr = Array.new($recommend_arr)
+    @amount_string = ""
+
+    if $user_amount == nil
+      @amount_string = "마지막 질문이네요!"
+    elsif $user_amount.include?("1")
+      @amount_string = "동구 밖 과수원샷!"
+    elsif $user_amount.include?("4")
+      @amount_string = "시원하게 한잔하시죠!"
+    else
+      @amount_string = "마지막 질문이네요!"
+    end
   end
 
   def challenge_update
