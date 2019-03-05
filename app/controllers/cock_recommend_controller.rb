@@ -558,5 +558,46 @@ class CockRecommendController < ApplicationController
 
   def result
     
+    $result_arr.each do |result_name|
+      upload = Count.new()
+      upload.name = result_name.name
+      upload.taste_sweet_sugar = 0
+      upload.taste_sweet_fruit = 0
+      upload.taste_fresh = 0
+      upload.taste_bitters_fruit = 0
+      upload.taste_bitters_drink = 0
+      
+      for taste in 0..$user_taste.length-1
+        if $user_taste[taste] == "단맛_설탕"
+          upload.taste_sweet_sugar = 1
+        elsif $user_taste[taste] == "단맛_과일"
+          upload.taste_sweet_fruit = 1
+        elsif $user_taste[taste] == "상큼"
+          upload.taste_fresh = 1
+        elsif $user_taste[taste] == "쓴맛_과일"
+          upload.taste_bitters_fruit = 1
+        elsif $user_taste[taste] == "쓴맛_술"
+          upload.taste_bitters_drink = 1
+        else
+        end
+      end
+      upload.alcohol = $user_alcohol
+      upload.amount = $user_amount
+
+      etc_string = $user_avoid[0]
+      for avoid in 1..$user_avoid.length-1
+        etc_string = etc_string + "," + $user_avoid[avoid]
+      end
+      upload.avoid = etc_string
+
+      challenge_str = $user_challenge[0]
+      for i in 1..$user_challenge.length-1
+        challenge_str = challenge_str + "," + $user_challenge[i]
+      end
+      upload.challenge = challenge_str
+
+      upload.save
+    end
+
   end
 end
