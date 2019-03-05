@@ -16,6 +16,7 @@ class CockRecommendController < ApplicationController
   $alcohol_arr = Array.new
   $amount_arr = Array.new
   $challenge_arr = Array.new
+  $message_arr = Array.new(["무라카미 하루키의 '맛있는 칵테일을 만드는 법'이라는 글을 아시나요?", "제 머릿속에 떠오르는 칵테일이 몇 개 있네요.", "저도 오늘 영업이 끝나면 한잔하고 싶은 하루네요.", "맛있는 건 정말 참을 수 없어~", "오늘 하루 잘 보내셨나요?", "넷플릭스가 요즘 재미있더라구요.", "멋진 바에서 좋은 칵테일을 마시는 건 행복한 일이에요."])
 
   def index
   end
@@ -277,7 +278,7 @@ class CockRecommendController < ApplicationController
     elsif $user_taste[0] == "상큼" and $user_taste.length == 1
       @taste_string = "상큼한 칵테일 한 잔은 기분전환에 좋죠."
     else
-      @taste_string = "맛있떵ㅎㅎㅎㅎㅎㅎㅎ."
+      @taste_string = $message_arr.sample(1)[0]
     end
       
   end
@@ -354,7 +355,7 @@ class CockRecommendController < ApplicationController
     elsif $user_alcohol.include?("7")
       @alcohol_string = "오늘 집에 안 가려고요?"
     else
-      @alcohol_string = "이 칵테일이면 좋아하실거 같은데?"
+      @alcohol_string = $message_arr.sample(1)[0]
     end
   end
 
@@ -557,5 +558,46 @@ class CockRecommendController < ApplicationController
 
   def result
     
+    $result_arr.each do |result_name|
+      upload = Count.new()
+      upload.name = result_name.name
+      upload.taste_sweet_sugar = 0
+      upload.taste_sweet_fruit = 0
+      upload.taste_fresh = 0
+      upload.taste_bitters_fruit = 0
+      upload.taste_bitters_drink = 0
+      
+      for taste in 0..$user_taste.length-1
+        if $user_taste[taste] == "단맛_설탕"
+          upload.taste_sweet_sugar = 1
+        elsif $user_taste[taste] == "단맛_과일"
+          upload.taste_sweet_fruit = 1
+        elsif $user_taste[taste] == "상큼"
+          upload.taste_fresh = 1
+        elsif $user_taste[taste] == "쓴맛_과일"
+          upload.taste_bitters_fruit = 1
+        elsif $user_taste[taste] == "쓴맛_술"
+          upload.taste_bitters_drink = 1
+        else
+        end
+      end
+      upload.alcohol = $user_alcohol
+      upload.amount = $user_amount
+
+      etc_string = $user_avoid[0]
+      for avoid in 1..$user_avoid.length-1
+        etc_string = etc_string + "," + $user_avoid[avoid]
+      end
+      upload.avoid = etc_string
+
+      challenge_str = $user_challenge[0]
+      for i in 1..$user_challenge.length-1
+        challenge_str = challenge_str + "," + $user_challenge[i]
+      end
+      upload.challenge = challenge_str
+
+      upload.save
+    end
+
   end
 end
