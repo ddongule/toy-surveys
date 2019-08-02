@@ -1,4 +1,49 @@
-<head>
+
+
+<div class="exp">
+  <div class="checkbox">
+    <form action = '/cock_recommend/amount_update' method = "get">
+      <p><%= @alcohol_string %>
+      <p>4. 꿀꺽꿀꺽 홀짝홀짝?(1가지 선택)</p>
+      <input id="amount" type="radio" name="amount" value="1">
+        <label for="amount">
+          <span>원샷</span>
+        </label>
+
+      <input id="amount1" type="radio" name="amount" value="2">
+        <label for="amount1">
+          <span>홀짝홀짝</span>
+        </label>
+
+      <input id="amount2" type="radio" name="amount" value="3">
+        <label for="amount2">
+          <span>꿀꺽꿀꺽</span>
+        </label>
+
+
+      <input id="amount3" type="radio" name="amount" value="4">
+        <label for="amount3">
+          <span>벌컥벌컥</span>
+        </label>
+
+      <input id="amount4" type="radio" name="amount" value="5">
+        <label for="amount4">
+          <span>상관없음</span>
+        </label>
+
+      <br><br><br><br><br>
+      <input type = 'submit' value = '다음'>
+      <a href = '/cock_recommend/back_before'>이전 선택지로 돌아가기</a>
+
+      <%# $recommend_arr.each do |x| %>
+        <%# x.name %>
+      <%# end %>
+
+    </form>
+  </div>
+</div>
+
+
 <script type="text/javascript">
   function noEvent() { // 새로 고침 방지
       if (event.keyCode == 116) {
@@ -13,52 +58,3 @@
   }
 document.onkeydown = noEvent;
 </script>
-</head>
-
-
-<div class="exp">
-  <div class="checkbox">
-    <form action = '/cock_recommend/amount_update' method = "get">
-      <p><%= @alcohol_string %></br>
-      <p>4. 꿀꺽꿀꺽 홀짝홀짝?(1가지 선택)</p>
-      <input id="amount" type="radio" name="amount" value="1">
-        <label for="amount">
-          <span>원샷</span>
-        </label>
-      </input>
-
-      <input id="amount1" type="radio" name="amount" value="2">
-        <label for="amount1">
-          <span>홀짝홀짝</span>
-        </label>
-      </input>
-
-      <input id="amount2" type="radio" name="amount" value="3">
-        <label for="amount2">
-          <span>꿀꺽꿀꺽</span>
-        </label>
-
-
-      <input id="amount3" type="radio" name="amount" value="4">
-        <label for="amount3">
-          <span>벌컥벌컥</span>
-        </label>
-      </input>
-
-      <input id="amount4" type="radio" name="amount" value="5">
-        <label for="amount4">
-          <span>상관없음</span>
-        </label>
-      </input>
-
-      <br><br><br><br><br>
-      <input type = 'submit' value = '다음'></input>
-      <a href = '/cock_recommend/back_before'>이전 선택지로 돌아가기</a></br>
-      ///////////////</br>
-      <% $recommend_arr.each do |x| %>
-        <%= x.name %></br>
-      <%end%>
-
-    </form>
-  </div>
-</div>

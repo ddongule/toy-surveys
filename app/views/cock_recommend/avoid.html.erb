@@ -1,26 +1,7 @@
-<head>
-  <script type="text/javascript">
-
-  function noEvent() { // 새로 고침 방지
-      if (event.keyCode == 116) {
-          alert("새로 고침하여 메인 페이지로 이동합니다.");
-          window.location.href = '/'
-          event.keyCode = 2;
-          return false;
-      } else if (event.ctrlKey
-              && (event.keyCode == 78 || event.keyCode == 82)) {
-          return false;
-      }
-  }
-  document.onkeydown = noEvent;
-
-  </script>
-</head>
-
 <div class="exp">
   <div class="checkbox">
     <form action = '/cock_recommend/avoid_update' method = "get">
- <%#div><=#%> 
+
         <p>첫 번째 질문 드릴게요.</p></br>
         <p>혹시 이 중에서 못 드시거나 먹고 싶지 않은 재료가 있나요? (중복선택 가능)</p>
         
@@ -28,65 +9,79 @@
           <label for="check">
             <span>민트</span>
           </label>
-        </input>
         <input id="check1" type="checkbox" name="avoid[]" value="커피">
           <label for="check1">
             <span>커피</span>
           </label>
-        </input>
         <input id="check2" type="checkbox" name="avoid[]" value="메론">
           <label for="check2">
             <span>메론</span>
           </label>
-        </input>
+
         <input id="check3" type="checkbox" name="avoid[]" value="탄산">
           <label for="check3">
             <span>탄산</span>
           </label>
-        </input>
+
         <input id="check4" type="checkbox" name="avoid[]" value="에너지드링크">
           <label for="check4">
             <span>에너지드링크</span>
           </label>
-        </input>
+
         <input id="check5" type="checkbox" name="avoid[]" value="초코">
           <label for="check5">
             <span>초코</span>
           </label>
-        </input>
+
         <input id="check6" type="checkbox" name="avoid[]" value="우유">
           <label for="check6">
             <span>우유</span>
           </label>
-        </input>
+
         <input id="check7" type="checkbox" name="avoid[]" value="아몬드">
           <label for="check7">
             <span>아몬드</span>
           </label>
-        </input>
+
         <input id="check8" type="checkbox" name="avoid[]" value="생강">
           <label for="check8">
             <span>생강</span>
           </label>
-        </input>
+
         <input id="check9" type="checkbox" name="avoid[]" value="달걀">
           <label for="check9">
             <span>달걀</span>
           </label>
-        </input>
+
         <input id="check10" type="checkbox" name="avoid[]" value="상관없음">
           <label for="check10">
             <span>상관없음</span>
           </label>
-        </input><br/>
-      <%#></div><=#%> 
+          <br/>
 
-      <input type = 'submit' value = '다음'></input>
-      ///////////////</br>
+      <input type = 'submit' value = '다음'>
+      <br>
+
+
       <% $recommend_arr.each do |x| %>
-        <%= x.name %></br>
+        <% x.name %><br>
       <%end%>
     
     </form>
   </div>
 </div>
+  <script type="text/javascript">
+
+    function noEvent() { // 새로 고침 방지
+        if (event.keyCode == 116) {
+            alert("새로 고침하여 메인 페이지로 이동합니다.");
+            window.location.href = '/'
+            event.keyCode = 2;
+            return false;
+        } else if (event.ctrlKey
+                && (event.keyCode == 78 || event.keyCode == 82)) {
+            return false;
+        }
+    }
+    document.onkeydown = noEvent;
+  </script>

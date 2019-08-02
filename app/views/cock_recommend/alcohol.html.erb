@@ -1,4 +1,65 @@
 <head>
+
+</head>
+
+<div class="exp">
+  <div class="checkbox">
+    <form action = '/cock_recommend/alcohol_update' method = "get">
+      <p><%= @taste_string %></p></br>
+      <p>3. 마셔마셔 먹고 디져~(1가지 선택)</p>
+      <input id="alchol" type="radio" name="alcohol" value="1">
+        <label for="alchol">
+          <span>무알콜</span>
+        </label>
+
+
+      <input id="alchol1" type="radio" name="alcohol" value="2">
+        <label for="alchol1">
+          <span>맥주</span>
+        </label>
+
+      <input id="alchol2" type="radio" name="alcohol" value="3">
+        <label for="alchol2">
+          <span>와인</span>
+        </label>
+
+      <input id="alchol3" type="radio" name="alcohol" value="4">
+        <label for="alchol3">
+          <span>소주</span>
+        </label>
+      
+      <input id="alchol4" type="radio" name="alcohol" value="5">
+        <label for="alchol4">
+          <span>폭탄주</span>
+        </label>
+
+      <input id="alchol5" type="radio" name="alcohol" value="6">
+        <label for="alchol5">
+          <span>보드카</span>
+        </label>
+
+      <input id="alchol6" type="radio" name="alcohol" value="7">
+        <label for="alchol6">
+          <span>핵높음(집에 못감)</span>
+        </label>
+
+      <input id="alchol7" type="radio" name="alcohol" value="8">
+        <label for="alchol7">
+          <span>상관없음 </span>
+        </label>
+
+      <input type = 'submit' value = '다음'>
+      <a href = '/cock_recommend/back_before'>이전 선택지로 돌아가기</a>
+
+      <%# $recommend_arr.each do |x| %>
+        <%# x.name %>
+      <%# end %>
+    </form>
+
+  </div>
+</div>
+
+
   <script type="text/javascript">
     function noEvent() { // 새로 고침 방지
         if (event.keyCode == 116) {
@@ -13,70 +74,3 @@
     }
     document.onkeydown = noEvent;
   </script>
-</head>
-
-<div class="exp">
-  <div class="checkbox">
-    <form action = '/cock_recommend/alcohol_update' method = "get">
-      <p><%= @taste_string %></p></br>
-      <p>3. 마셔마셔 먹고 디져~(1가지 선택)</p>
-      <input id="alchol" type="radio" name="alcohol" value="1">
-        <label for="alchol">
-          <span>무알콜</span>
-        </label>
-      </input>
-
-
-      <input id="alchol1" type="radio" name="alcohol" value="2">
-        <label for="alchol1">
-          <span>맥주</span>
-        </label>
-      </input>
-
-      <input id="alchol2" type="radio" name="alcohol" value="3">
-        <label for="alchol2">
-          <span>와인</span>
-        </label>
-      </input>
-
-      <input id="alchol3" type="radio" name="alcohol" value="4">
-        <label for="alchol3">
-          <span>소주</span>
-        </label>
-      </input>
-      
-      <input id="alchol4" type="radio" name="alcohol" value="5">
-        <label for="alchol4">
-          <span>폭탄주</span>
-        </label>
-      </input> 
-
-      <input id="alchol5" type="radio" name="alcohol" value="6">
-        <label for="alchol5">
-          <span>보드카</span>
-        </label>
-      </input>
-
-      <input id="alchol6" type="radio" name="alcohol" value="7">
-        <label for="alchol6">
-          <span>핵높음(집에 못감)</span>
-        </label>
-      </input>
-
-      <input id="alchol7" type="radio" name="alcohol" value="8">
-        <label for="alchol7">
-          <span>상관없음 </span>
-        </label>
-      </input>
-
-      <input type = 'submit' value = '다음'></input>
-      <a href = '/cock_recommend/back_before'>이전 선택지로 돌아가기</a></br>
-      ///////////////</br>
-
-      <% $recommend_arr.each do |x| %>
-        <%= x.name %></br>
-      <%end%>
-    </form>
-
-  </div>
-</div>

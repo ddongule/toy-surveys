@@ -1,4 +1,41 @@
-<head>
+
+<div class="exp">
+  <div class="checkbox">
+    <form action = '/cock_recommend/challenge_update' method = "get">
+      <p><%= @amount_string %>
+      <p>5. 아래 항목 중 도전해보고 싶은거 있어요?(복수선택)</p>
+      <input id="challenge" type="checkbox" name="challenge[]" value="위스키">
+        <label for="challenge">
+          <span>위스키</span>
+        </label>
+        
+      <input id="challenge1" type="checkbox" name="challenge[]" value="진">
+        <label for="challenge1">
+          <span>진</span>
+        </label>
+        
+      <input id="challenge2" type="checkbox" name="challenge[]" value="데킬라">
+        <label for="challenge2">
+          <span>데킬라</span>
+        </label>
+      
+      <input id="challenge3" type="checkbox" name="challenge[]" value="상관없음">
+        <label for="challenge3">
+          <span>상관없음</span>
+        </label>
+
+      <input type = 'submit' value = '다음'>
+      <a href = '/cock_recommend/back_before'>이전 선택지로 돌아가기</a>
+      
+      <%# $recommend_arr.each do |x| %>
+        <%# x.name %>
+      <%# end %>
+
+    </form>
+  </div>
+</div>
+
+
   <script type="text/javascript">
     function noEvent() { // 새로 고침 방지
         if (event.keyCode == 116) {
@@ -11,47 +48,5 @@
             return false;
         }
     }
-  document.onkeydown = noEvent;
+    document.onkeydown = noEvent;
   </script>
-</head>
-
-<div class="exp">
-  <div class="checkbox">
-    <form action = '/cock_recommend/challenge_update' method = "get">
-      <p><%= @amount_string %></br>
-      <p>5. 아래 항목 중 도전해보고 싶은거 있어요?(복수선택)</p>
-      <input id="challenge" type="checkbox" name="challenge[]" value="위스키">
-        <label for="challenge">
-          <span>위스키</span>
-        </label>
-      </input>
-        
-      <input id="challenge1" type="checkbox" name="challenge[]" value="진">
-        <label for="challenge1">
-          <span>진</span>
-        </label>
-      </input>
-        
-      <input id="challenge2" type="checkbox" name="challenge[]" value="데킬라">
-        <label for="challenge2">
-          <span>데킬라</span>
-        </label>
-      </input>
-      
-      <input id="challenge3" type="checkbox" name="challenge[]" value="상관없음">
-        <label for="challenge3">
-          <span>상관없음</span>
-        </label>
-      </input>
-
-      <input type = 'submit' value = '다음'></input>
-      <a href = '/cock_recommend/back_before'>이전 선택지로 돌아가기</a></br>
-      ///////////////</br>
-      
-      <% $recommend_arr.each do |x| %>
-      <%= x.name %></br>
-      <%end%>
-
-    </form>
-  </div>
-</div>
