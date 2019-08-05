@@ -5,6 +5,13 @@
   font-style: normal;
 }
 
+@font-face { 
+  font-family: 'DungGeunMo'; 
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/DungGeunMo.woff') format('woff'); 
+  font-weight: normal; 
+  font-style: normal; 
+}
+
 
 .logo {
   display: block;
@@ -46,7 +53,8 @@ html{
     width: auto;
     justify-content: center;
     background: #000000;
-    font-family: 'Goyang', sans-serif;
+    // font-family: 'Goyang', sans-serif;
+    font-family: "DungGeunMo", sans-serif;
     font-weight: 400;
   }
 }
@@ -73,8 +81,15 @@ html{
         // flex-direction: row;
         flex-direction: column;
         justify-content: space-evenly;
+        margin: 3em 0;
     }
-
+    @media (max-width: 400px) {
+      // flex-direction: row;
+      flex-direction: column;
+      justify-content: space-evenly;
+      font-size: 0.7em;
+      margin: 3em 0;
+  }
 }
 
 h1 {
@@ -136,7 +151,7 @@ $yellow: #ead084;
   outline:none;
   height: 10%;
   text-align: center;
-  width: 25%;
+  width: 60%;
   border-radius:40px;
   background: transparent;
   border: 2px solid $pink;
@@ -166,6 +181,40 @@ $yellow: #ead084;
   &:after {
     content:"";
   }
+  @media (max-width: 400px) {
+    outline:none;
+    height: 10%;
+    text-align: center;
+    border-radius:40px;
+    background: transparent;
+    border: 2px solid $pink;
+    color: $yellow;
+    letter-spacing:1px;
+    text-shadow:0;
+    text-decoration: none;
+    text-shadow: 3px 3px 30px #ead084;
+    margin: 2em 0;
+    padding: 1em;
+    box-shadow: 0px 0px 15px 3px #d93e60;
+    font:{
+      size:1.5em;
+      weight:bold;
+    }
+    cursor: pointer;
+    transition: all 0.25s ease;
+    &:hover {
+      color:#fff;
+      text-shadow: 3px 3px 30px #ead084;
+      background: $pink;
+    }
+    &:active {
+      //letter-spacing: 2px;
+      letter-spacing: 2px ;
+    }
+    &:after {
+      content:"";
+    }
+  }
 }
 .onclic {
   width: 40px;
@@ -188,7 +237,8 @@ $yellow: #ead084;
   color: white;
   background: $pink;
   &:after {
-    font-family:'Goyang';
+    // font-family:'Goyang';
+    font-family: "DungGeunMo";
     content:"\f00c";
   }
 }

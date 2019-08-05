@@ -21,7 +21,8 @@ $yellow: #ead084;
 
 input {
   font-size: 1em;
-  font-family: "Goyang";
+  // font-family: "Goyang";
+  font-family: "DungGeunMo";
   outline: none;
   /* height: 10%; */
   /* text-align: center; */
@@ -46,7 +47,7 @@ input {
   outline:none;
   height: 10%;
   text-align: center;
-  width: 30%;
+  // width: 30%;
   border-radius:40px;
   background: transparent;
   border: 2px solid $pink;
@@ -98,7 +99,8 @@ input {
   color: white;
   background: $pink;
   &:after {
-    font-family:'Goyang';
+    // font-family:'Goyang';
+    font-family: "DungGeunMo";
     content:"\f00c";
   }
 }
@@ -145,6 +147,8 @@ label {
     color: black;
     cursor: pointer;
     position: relative; // important
+    margin: 5px 0px 0px 0px;
+    
   
     // Now we'll create the checkbox object
   
@@ -193,7 +197,7 @@ label {
       transition: width 50ms ease;
       transform-origin: 0% 0%;
       display: block;
-      margin: -4px 0px 0 14px;
+      margin: 1px 0px 0px 14px;
 
       //top: 16px; // you'll need to experiment with placement depending on the dimensions you've chosen
       //left: 10px; // you'll need to experiment with placement depending on the dimensions you've chosen
@@ -275,7 +279,7 @@ input[type="radio"] {
         transform: scale(1.25); // enlarge the box
         
         &:after {
-          width: 0.5em;
+          width: 1.5em;
           background: #ffcd60;
           transition: width 150ms ease 100ms; // enlarge the tick
         }

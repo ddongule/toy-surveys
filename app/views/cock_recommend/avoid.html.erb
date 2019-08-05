@@ -2,7 +2,7 @@
   <div class="checkbox">
     <form action = '/cock_recommend/avoid_update' method = "get">
 
-        <p>첫 번째 질문 드릴게요.</p></br>
+        <p>첫 번째 질문 드릴게요.</p>
         <p>혹시 이 중에서 못 드시거나 먹고 싶지 않은 재료가 있나요? (중복선택 가능)</p>
         
         <input id="check" type="checkbox" name="avoid[]" value="민트">
@@ -57,10 +57,8 @@
           <label for="check10">
             <span>상관없음</span>
           </label>
-          <br/>
 
       <input type = 'submit' value = '다음'>
-      <br>
 
 
       <% $recommend_arr.each do |x| %>
