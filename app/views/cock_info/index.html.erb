@@ -17,22 +17,28 @@
       </div>
     </div> -->
 
-    <% @cocktails.in_groups_of(3).each do |group| %>
-      <div class="row">
-          <% group.each do |item| %>
-            <div class="column">
-              <div class="coc-content">
-                <div class="coc-img">
-                  <%=image_tag ("#{item["photo"]}"), :class=>"coc-img" %>
-                </div>
-                <div class="coc-name">
-                  <%= item.name%>
-                </div>
+
+   <div class="row">
+      <div class="column">
+        <div class="coc-content">
+            <% for i in (2..105) %>
+              <%= image_tag ("/images/#{i}.png"), :class=> "coc-img"%>
+            <% end %>
+            <% @cocktails.each do |item| %>
+              <div class="coc-name">
+                <%= item.name %>
               </div>
-            </div>
-          <% end %>
+            <% end %>
+              
+          </div>
       </div>
-    <% end %>
+    
+  </div>
+
+
+  
+
+
 
   <div class="sec">
     <a href = "/home/index" class="btn3">
@@ -41,6 +47,22 @@
   </div>
 </div>
 
+    <%# @cocktails.in_groups_of(3).each do |group| %>
+      <div class="row">
+          <%# group.each do |item| %>
+            <div class="column">
+              <div class="coc-content">
+                <div class="coc-img">
+                  <%#=image_tag ("#{item["photo"]}"), :class=>"coc-img" %>
+                </div>
+                <div class="coc-name">
+                  <%#= item.name%>
+                </div>
+              </div>
+            </div>
+          <%# end %>
+      </div>
+    <%# end %>
 <script>
   (function(document) {
     'use strict';

@@ -9,7 +9,7 @@
 //
 $baseColor: rgb(0, 0, 0);
 $borderRadius: 10px;
-$imageBig: 20rem;
+$imageBig: 15rem;
 $imageSmall: 60px;
 $padding: 10px;
 
@@ -32,6 +32,7 @@ body {
    border-radius: 50%;
    height: $imageBig;
    width: $imageBig;
+   margin: 2em;
 }
 .coc-name {
   color: white;
@@ -88,7 +89,6 @@ body {
  }
  .column {
    float: left;
-   width: 33.33%;
  }
  .coc-content{
    margin: 1rem;
