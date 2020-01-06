@@ -6,3 +6,4 @@ namespace :import_ocock_csv do
     end
   end
 end
+# rails import_ocock_csv:create_cocktails

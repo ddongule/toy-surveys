@@ -1,314 +1,360 @@
-// Place all the styles related to the cock_recommend controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-@font-face { 
-  font-family: 'Goyang'; 
-  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Goyang.woff') format('woff'); 
-  font-weight: normal; 
-  font-style: normal; 
-}
 
-$pink: #d93e60;
-$yellow: #ead084;
+@import url(//fonts.googleapis.com/earlyaccess/jejumyeongjo.css); .jejumyeongjo * { font-family: 'Jeju Myeongjo', serif; }
+@font-face { font-family: 'KOMACON'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_seven@1.2/KOMACON.woff') format('woff'); font-weight: normal; font-style: normal; }
+.buttons {
+  .nav {
+    height: 150px;
+    background: linear-gradient(271deg, #ff7038, #f8cb00, #fe5f51);
+    background-size: 600% 600%;
 
-.index{
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 80%;
-}
+    -webkit-animation: AnimationName 30s ease infinite;
+    -moz-animation: AnimationName 30s ease infinite;
+    animation: AnimationName 30s ease infinite;
 
-
-input {
-  font-size: 1em;
-  // font-family: "Goyang";
-  font-family: "DungGeunMo";
-  outline: none;
-  /* height: 10%; */
-  /* text-align: center; */
-  /* width: 30%; */
-  border-radius: 40px;
-  background: transparent;
-  border: 2px solid #d93e60;
-  color: #ead084;
-  letter-spacing: 1px;
-  text-shadow: 0;
-  text-decoration: none;
-  text-shadow: 3px 3px 30px #ead084;
-  margin: 2em 0;
-  padding: 1em;
-  box-shadow: 0px 0px 15px 3px #d93e60;
-  font-size: 1.5em;
-  font-weight: bold;
-  cursor: pointer;
-  transition: all 0.25s ease;
-}
-.btn2 {
-  outline:none;
-  height: 10%;
-  text-align: center;
-  // width: 30%;
-  border-radius:40px;
-  background: transparent;
-  border: 2px solid $pink;
-  color: $yellow;
-  letter-spacing:1px;
-  text-shadow:0;
-  text-decoration: none;
-  text-shadow: 3px 3px 30px #ead084;
-  margin: 2em 0;
-  padding: 1em;
-  box-shadow: 0px 0px 15px 3px #d93e60;
-  font:{
-    size:1.5em;
-    weight:bold;
-  }
-  cursor: pointer;
-  transition: all 0.25s ease;
-  &:hover {
-    color:#fff;
-    text-shadow: 3px 3px 30px #ead084;
-    background: $pink;
-  }
-  &:active {
-    //letter-spacing: 2px;
-    letter-spacing: 2px ;
-  }
-  &:after {
-    content:"";
-  }
-}
-.onclic {
-  width: 40px;
-  border-color:$yellow;
-  border-width:3px;
-  font-size:0;
-  border-left-color:$pink;
-  animation: rotating 2s 0.25s linear infinite;
-
-  &:after {
-    content:"";
-  }
-  &:hover {
-    color:$pink;
-    background: transparent;
-  }
-}
-.validate {
-  font-size:13px;
-  color: white;
-  background: $pink;
-  &:after {
-    // font-family:'Goyang';
-    font-family: "DungGeunMo";
-    content:"\f00c";
-  }
-}
-
-@keyframes rotating {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-    
-    form{
-      font-size: 1em;
+    @-webkit-keyframes AnimationName {
+        0%{background-position:0% 50%}
+        50%{background-position:100% 51%}
+        100%{background-position:0% 50%}
+    }
+    @-moz-keyframes AnimationName {
+        0%{background-position:0% 50%}
+        50%{background-position:100% 51%}
+        100%{background-position:0% 50%}
+    }
+    @keyframes AnimationName {
+        0%{background-position:0% 50%}
+        50%{background-position:100% 51%}
+        100%{background-position:0% 50%}
+    }
+    .nav-title {
+      color: white;
+      font-size: 2.5rem;
       text-align: center;
-      input[type="submit"] {
-        // color:#fff;
-        // font-family: "Goyang";
-        // font-size: 1em;
-        
-      }
-    }
-
-.exp {
-  margin: 5%;
-  justify-content: center;
-  .checkbox {
-    vertical-align: middle; // to center the item
-    text-align: center; // to center the item
-    form {
-      display: grid;
-      color: #fff;
-      a{
-        color: #fff;
-      }
+      padding: 45.5px 0;
+      font-family: "KOMACON";
     }
   }
-  
 }
 
-label {
-    display: inline-block; // to make it easier to click
-    color: black;
-    cursor: pointer;
-    position: relative; // important
-    margin: 5px 0px 0px 0px;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// .index{
+//   display: block;
+//   margin-left: auto;
+//   margin-right: auto;
+//   width: 80%;
+// }
+
+
+// input {
+//   font-size: 1em;
+//   // font-family: "Goyang";
+//   font-family: "DungGeunMo";
+//   outline: none;
+//   /* height: 10%; */
+//   /* text-align: center; */
+//   /* width: 30%; */
+//   border-radius: 40px;
+//   background: transparent;
+//   border: 2px solid #d93e60;
+//   color: #ead084;
+//   letter-spacing: 1px;
+//   text-shadow: 0;
+//   text-decoration: none;
+//   text-shadow: 3px 3px 30px #ead084;
+//   margin: 2em 0;
+//   padding: 1em;
+//   box-shadow: 0px 0px 15px 3px #d93e60;
+//   font-size: 1.5em;
+//   font-weight: bold;
+//   cursor: pointer;
+//   transition: all 0.25s ease;
+// }
+// .btn2 {
+//   outline:none;
+//   height: 10%;
+//   text-align: center;
+//   // width: 30%;
+//   border-radius:40px;
+//   background: transparent;
+//   border: 2px solid $pink;
+//   color: $yellow;
+//   letter-spacing:1px;
+//   text-shadow:0;
+//   text-decoration: none;
+//   text-shadow: 3px 3px 30px #ead084;
+//   margin: 2em 0;
+//   padding: 1em;
+//   box-shadow: 0px 0px 15px 3px #d93e60;
+//   font:{
+//     size:1.5em;
+//     weight:bold;
+//   }
+//   cursor: pointer;
+//   transition: all 0.25s ease;
+//   &:hover {
+//     color:#fff;
+//     text-shadow: 3px 3px 30px #ead084;
+//     background: $pink;
+//   }
+//   &:active {
+//     //letter-spacing: 2px;
+//     letter-spacing: 2px ;
+//   }
+//   &:after {
+//     content:"";
+//   }
+// }
+// .onclic {
+//   width: 40px;
+//   border-color:$yellow;
+//   border-width:3px;
+//   font-size:0;
+//   border-left-color:$pink;
+//   animation: rotating 2s 0.25s linear infinite;
+
+//   &:after {
+//     content:"";
+//   }
+//   &:hover {
+//     color:$pink;
+//     background: transparent;
+//   }
+// }
+// .validate {
+//   font-size:13px;
+//   color: white;
+//   background: $pink;
+//   &:after {
+//     // font-family:'Goyang';
+//     font-family: "DungGeunMo";
+//     content:"\f00c";
+//   }
+// }
+
+// @keyframes rotating {
+//   from {
+//     transform: rotate(0deg);
+//   }
+//   to {
+//     transform: rotate(360deg);
+//   }
+// }
+    
+//     form{
+//       font-size: 1em;
+//       text-align: center;
+//       input[type="submit"] {
+//         // color:#fff;
+//         // font-family: "Goyang";
+//         // font-size: 1em;
+        
+//       }
+//     }
+
+// .exp {
+//   margin: 5%;
+//   justify-content: center;
+//   .checkbox {
+//     vertical-align: middle; // to center the item
+//     text-align: center; // to center the item
+//     form {
+//       display: grid;
+//       color: #fff;
+//       a{
+//         color: #fff;
+//       }
+//     }
+//   }
+  
+// }
+
+// label {
+//     display: inline-block; // to make it easier to click
+//     color: black;
+//     cursor: pointer;
+//     position: relative; // important
+//     margin: 5px 0px 0px 0px;
     
   
-    // Now we'll create the checkbox object
+//     // Now we'll create the checkbox object
   
-    span {
-      display: inline-block;
-      position: relative;
-      background-color: transparent;
-      // width: 25px;
-      height: 25px;
-      transform-origin: center;
-      // border: 2px solid black;
-      border-radius: 50%;
-      vertical-align: -6px;
-      margin: 0.5em;
-      transition: background-color 150ms 200ms, transform 350ms cubic-bezier(.78,-1.22,.17,1.89); // custom ease effect for bouncy animation
-      font-size: 1em;
-      color: #ffffff;
-  // Now we'll create the "tick" using pseudo elements - those will be basically two lines that will be rotated to form the "tick"
+//     span {
+//       display: inline-block;
+//       position: relative;
+//       background-color: transparent;
+//       // width: 25px;
+//       height: 25px;
+//       transform-origin: center;
+//       // border: 2px solid black;
+//       border-radius: 50%;
+//       vertical-align: -6px;
+//       margin: 0.5em;
+//       transition: background-color 150ms 200ms, transform 350ms cubic-bezier(.78,-1.22,.17,1.89); // custom ease effect for bouncy animation
+//       font-size: 1em;
+//       color: #ffffff;
+//   // Now we'll create the "tick" using pseudo elements - those will be basically two lines that will be rotated to form the "tick"
   
-    &:before {
-      content: "";
-      width: 0px;
-      height: 3px;
-      border-radius: 2px;
-      background: #fff;
-      position: absolute;
-      transform: rotate(45deg);
-      top: 11px;
-      left: 12px;
-      transition: width 50ms ease 50ms;
-      transform-origin: 0% 0%;
+//     &:before {
+//       content: "";
+//       width: 0px;
+//       height: 3px;
+//       border-radius: 2px;
+//       background: #fff;
+//       position: absolute;
+//       transform: rotate(45deg);
+//       top: 11px;
+//       left: 12px;
+//       transition: width 50ms ease 50ms;
+//       transform-origin: 0% 0%;
 
 
-    }
+//     }
   
-    &:after {
-      content: "";
-      width: 0;
-      height: 3px;
-      border-radius: 2px;
-      background: transparent;
-      // position: absolute;
-      transform: rotate(305deg);
-      // top: 18px;
-      // left: 15px;
-      transition: width 50ms ease;
-      transform-origin: 0% 0%;
-      display: block;
-      margin: 1px 0px 0px 14px;
+//     &:after {
+//       content: "";
+//       width: 0;
+//       height: 3px;
+//       border-radius: 2px;
+//       background: transparent;
+//       // position: absolute;
+//       transform: rotate(305deg);
+//       // top: 18px;
+//       // left: 15px;
+//       transition: width 50ms ease;
+//       transform-origin: 0% 0%;
+//       display: block;
+//       margin: 1px 0px 0px 14px;
 
-      //top: 16px; // you'll need to experiment with placement depending on the dimensions you've chosen
-      //left: 10px; // you'll need to experiment with placement depending on the dimensions you've chosen
-    }
-  }
-  // Time to add some life to it
+//       //top: 16px; // you'll need to experiment with placement depending on the dimensions you've chosen
+//       //left: 10px; // you'll need to experiment with placement depending on the dimensions you've chosen
+//     }
+//   }
+//   // Time to add some life to it
   
-  // &:hover {
-  //   span {
-  //     &:before {
-  //       width: 5px;
-  //       transition: width 100ms ease;
-  //     }
+//   // &:hover {
+//   //   span {
+//   //     &:before {
+//   //       width: 5px;
+//   //       transition: width 100ms ease;
+//   //     }
       
-  //     &:after {
-  //       width: 10px;
-  //       transition: width 150ms ease 100ms;
-  //     }
-  //   }
-  // }
-}
+//   //     &:after {
+//   //       width: 10px;
+//   //       transition: width 150ms ease 100ms;
+//   //     }
+//   //   }
+//   // }
+// }
 
-input[type="checkbox"] {
-    display: none; // hide the system checkbox
+// input[type="checkbox"] {
+//     display: none; // hide the system checkbox
 
-  // Let's add some effects after the checkbox is checked
+//   // Let's add some effects after the checkbox is checked
   
-  &:checked {
-    + label {
-      span {
-        background-color: #000;
-        transform: scale(1.25); // enlarge the box
+//   &:checked {
+//     + label {
+//       span {
+//         background-color: #000;
+//         transform: scale(1.25); // enlarge the box
         
-        &:after {
-          width: 1.5em;
-          background: #ffcd60;
-          transition: width 150ms ease 100ms; // enlarge the tick
-        }
+//         &:after {
+//           width: 1.5em;
+//           background: #ffcd60;
+//           transition: width 150ms ease 100ms; // enlarge the tick
+//         }
         
-        &:before {
-          width: 0.5em;
-          background: #ffcd60;
-          transition: width 150ms ease 100ms; // enlarge the tick
-        }
-      }
+//         &:before {
+//           width: 0.5em;
+//           background: #ffcd60;
+//           transition: width 150ms ease 100ms; // enlarge the tick
+//         }
+//       }
       
-      // &:hover { // copy the states for onMouseOver to avoid flickering
-      //   span {
-      //     background-color: #000;
-      //     transform: scale(1.25); // enlarge the box
+//       // &:hover { // copy the states for onMouseOver to avoid flickering
+//       //   span {
+//       //     background-color: #000;
+//       //     transform: scale(1.25); // enlarge the box
 
-      //       &:after {
-      //         width: 0.5em;
-      //         background: #ffcd60;
-      //         transition: width 150ms ease 100ms; // enlarge the tick
-      //       }
+//       //       &:after {
+//       //         width: 0.5em;
+//       //         background: #ffcd60;
+//       //         transition: width 150ms ease 100ms; // enlarge the tick
+//       //       }
 
-      //       &:before {
-      //         width: 0.5em;
-      //         background: #ffcd60;
-      //         transition: width 150ms ease 100ms; // enlarge the tick
-      //       }
-      //   }  
-      // }
-    }
-  }
-}
+//       //       &:before {
+//       //         width: 0.5em;
+//       //         background: #ffcd60;
+//       //         transition: width 150ms ease 100ms; // enlarge the tick
+//       //       }
+//       //   }  
+//       // }
+//     }
+//   }
+// }
 
 
-input[type="radio"] {
-    display: none; // hide the system checkbox
+// input[type="radio"] {
+//     display: none; // hide the system checkbox
 
-  // Let's add some effects after the checkbox is checked
+//   // Let's add some effects after the checkbox is checked
   
-  &:checked {
-    + label {
-      span {
-        background-color: #000;
-        transform: scale(1.25); // enlarge the box
+//   &:checked {
+//     + label {
+//       span {
+//         background-color: #000;
+//         transform: scale(1.25); // enlarge the box
         
-        &:after {
-          width: 1.5em;
-          background: #ffcd60;
-          transition: width 150ms ease 100ms; // enlarge the tick
-        }
+//         &:after {
+//           width: 1.5em;
+//           background: #ffcd60;
+//           transition: width 150ms ease 100ms; // enlarge the tick
+//         }
         
-        &:before {
-          width: 0.5em;
-          background: #ffcd60;
-          transition: width 150ms ease 100ms; // enlarge the tick
-        }
-      }
+//         &:before {
+//           width: 0.5em;
+//           background: #ffcd60;
+//           transition: width 150ms ease 100ms; // enlarge the tick
+//         }
+//       }
       
-      // &:hover { // copy the states for onMouseOver to avoid flickering
-      //   span {
-      //     background-color: #000;
-      //     transform: scale(1.25); // enlarge the box
+//       // &:hover { // copy the states for onMouseOver to avoid flickering
+//       //   span {
+//       //     background-color: #000;
+//       //     transform: scale(1.25); // enlarge the box
 
-      //       &:after {
-      //         width: 0.5em;
-      //         background: #ffcd60;
-      //         transition: width 150ms ease 100ms; // enlarge the tick
-      //       }
+//       //       &:after {
+//       //         width: 0.5em;
+//       //         background: #ffcd60;
+//       //         transition: width 150ms ease 100ms; // enlarge the tick
+//       //       }
 
-      //       &:before {
-      //         width: 0.5em;
-      //         background: #ffcd60;
-      //         transition: width 150ms ease 100ms; // enlarge the tick
-      //       }
-      //   }  
-      // }
-    }
-  }
-}
+//       //       &:before {
+//       //         width: 0.5em;
+//       //         background: #ffcd60;
+//       //         transition: width 150ms ease 100ms; // enlarge the tick
+//       //       }
+//       //   }  
+//       // }
+//     }
+//   }
+// }

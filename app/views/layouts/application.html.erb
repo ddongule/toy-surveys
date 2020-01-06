@@ -3,10 +3,10 @@
   <head>
     <title>오늘의 칵테일</title>
     <%= csrf_meta_tags %>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-
+    <link href='//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css' rel='stylesheet' type='text/css'>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-135219932-1"></script>
     <script>
@@ -26,10 +26,10 @@
 
       gtag('config', 'UA-135219932-2');
     </script>
-
   </head>
-
   <body>
-    <%= yield %>
+    <div class="con-body">
+      <%= yield %>
+    </div>
   </body>
 </html>

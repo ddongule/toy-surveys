@@ -1,37 +1,10 @@
-@font-face {
-  font-family: 'Goyang';
-  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Goyang.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
-}
+@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css); 
 
-@font-face { 
-  font-family: 'DungGeunMo'; 
-  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/DungGeunMo.woff') format('woff'); 
-  font-weight: normal; 
-  font-style: normal; 
-}
-
-
-.logo {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 80%;
-}
-
-.title {
-  text-align: center;
-  // margin: 3em 0 0 0;
-}
-.title1 {
-  text-align: center;
-  // margin: 1em;
-}
+* { font-family: 'Spoqa Han Sans', 'Spoqa Han Sans JP', 'Sans-serif'; }   
 
 //colors
-$red: #e8c91d;
-$white: #fff;
+// $red: #e8c91d;
+// $white: #fff;
 
 //base styles
 
@@ -40,208 +13,307 @@ $white: #fff;
   transition-property: all;
   transition-duration: .6s;
   transition-timing-function: ease;
+  margin: 0;
 }
 
 html{
-  margin: 5%;
   height: auto;
   width: auto;
-  body {
+  .con-body {
     box-sizing: border-box;
     height: 80%;
-    margin: 5%;
     width: auto;
     justify-content: center;
-    background: #000000;
-    // font-family: 'Goyang', sans-serif;
-    font-family: "DungGeunMo", sans-serif;
+    background: #ffffff;
     font-weight: 400;
+    height: 100vh;
+    margin: 0;
+    .con-bhome {
+      padding: 5rem 0;
+      height: 100%;
+      .home {
+        max-width: 50rem;
+        border-radius: 1.3rem;
+        margin: 2rem auto 1.5rem auto;
+        height: 250px;
+        // background-color: #f8cb00;
+        background: linear-gradient(271deg, #ff7038, #f8cb00, #fe5f51);
+        background-size: 600% 600%;
+    
+        -webkit-animation: AnimationName 30s ease infinite;
+        -moz-animation: AnimationName 30s ease infinite;
+        animation: AnimationName 30s ease infinite;
+    
+        @-webkit-keyframes AnimationName {
+            0%{background-position:0% 50%}
+            50%{background-position:100% 51%}
+            100%{background-position:0% 50%}
+        }
+        @-moz-keyframes AnimationName {
+            0%{background-position:0% 50%}
+            50%{background-position:100% 51%}
+            100%{background-position:0% 50%}
+        }
+        @keyframes AnimationName {
+            0%{background-position:0% 50%}
+            50%{background-position:100% 51%}
+            100%{background-position:0% 50%}
+        }
+        .home-logo{
+          width: 100%;
+          text-align: center;
+          margin: auto 0;
+          font-size: 50px;
+          color: white;
+          padding: 50px 0;
+          .logo {
+            display: block;
+            margin: 0 auto;
+            width: 300px;
+            height: auto;
+          }
+        }
+      }
+      .wrapper {
+        display: grid;
+        grid-gap: 3rem;
+        grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+        padding: 30px 0;
+        max-width: 50rem;
+        margin: 0 auto;
+        
+        .wrapper-grid {
+          position: relative;
+          border-radius: 1.3rem;
+          display: flex;
+          -webkit-box-align: center;
+          -ms-flex-align: center;
+          align-items: center;
+          -webkit-box-pack: center;
+          -ms-flex-pack: center;
+          justify-content: center;
+          -ms-flex-item-align: start;
+          align-self: flex-start;
+          min-height: 7.5rem;
+          padding: 0 .96364rem;
+          cursor: pointer;
+          background: #f4f4f4;
+          font-size: 20px;
+          a {
+            text-decoration: none;
+            color: black;
+          } 
+        }
+      }      
+    }
   }
 }
 
-// Main wrap
-.buttons {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    justify-content: center;
-    text-align: center;
-    width: 100%;
-}
+// home.index css
+
+//   .animated {
+//     background-image: linear-gradient(white, white), linear-gradient(180deg, #ffd742, #ff9b80 50%, #ff3f18);
+//     background-repeat: no-repeat;
+//     background-size: 100% 100%, 100% 200%;
+//     background-position: 0 0, 0 100%;
+//     background-origin: padding-box, border-box;
+//     animation: highlight 1s infinite alternate;
+//     border: 1px solid transparent;
+//     border-radius: 1.3rem;
+//   }
+//   .animated-2 {
+//     background-image: linear-gradient(white, white), linear-gradient(180deg, #ff3f18, #ff9b80 50%, #ffd742);
+//     background-repeat: no-repeat;
+//     background-size: 100% 100%, 100% 200%;
+//     background-position: 0 0, 0 100%;
+//     background-origin: padding-box, border-box;
+//     animation: highlight 1s infinite alternate;
+//     border: 1px solid transparent;
+//     border-radius: 1.3rem;
+//   }
+  
+
+
+// .buttons {
+//     display: flex;
+//     flex-direction: column;
+//     height: 100%;
+//     justify-content: center;
+//     text-align: center;
+//     width: 100%;
+// }
 
 // Button wrap
-.container {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
+// .container {
+//     align-items: center;
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: center;
+//     text-align: center;
 
-    @media (min-width: 600px) {
-        // flex-direction: row;
-        flex-direction: column;
-        justify-content: space-evenly;
-        margin: 3em 0;
-    }
-    @media (max-width: 400px) {
-      // flex-direction: row;
-      flex-direction: column;
-      justify-content: space-evenly;
-      font-size: 0.7em;
-      margin: 3em 0;
-  }
-}
+//     @media (min-width: 600px) {
+//         // flex-direction: row;
+//         flex-direction: column;
+//         justify-content: space-evenly;
+//         margin: 3em 0;
+//     }
+//     @media (max-width: 400px) {
+//       // flex-direction: row;
+//       flex-direction: column;
+//       justify-content: space-evenly;
+//       font-size: 0.7em;
+//       margin: 3em 0;
+//   }
+// }
 
-h1 {
-  color: $red;
-  font-size: 1.25em;
-  font-weight: 900;
-  // margin: 0 0 2em;
+// h1 {
+//   color: $red;
+//   font-size: 1.25em;
+//   font-weight: 900;
+//   // margin: 0 0 2em;
 
-  @media (min-width: 450px) {
-    font-size: 1.75em;
-  }
+//   @media (min-width: 450px) {
+//     font-size: 1.75em;
+//   }
 
-  @media (min-width: 760px) {
-    font-size: 3.25em;
-  }
+//   @media (min-width: 760px) {
+//     font-size: 3.25em;
+//   }
 
-  @media (min-width: 900px) {
-    font-size: 5.25em;
-    margin: 0 0 1em;
-  }
-}
+//   @media (min-width: 900px) {
+//     font-size: 5.25em;
+//     margin: 0 0 1em;
+//   }
+// }
 
-p {
-  color: $red;
-  font-size: 1em;
-  @media(min-width: 600px) {
-    left: 50%;
-    // position: absolute;
-    position: relative;
-    top: 10%;
-    transform: translate(-50%, 0);
-  }
+// p {
+//   color: $red;
+//   font-size: 1em;
+//   @media(min-width: 600px) {
+//     left: 50%;
+//     // position: absolute;
+//     position: relative;
+//     top: 10%;
+//     transform: translate(-50%, 0);
+//   }
 
-  @media(max-height: 500px) {
-    left: 0;
-    position: relative;
-    top: 0;
-    transform: translate(0, 0);
-  }
+//   @media(max-height: 500px) {
+//     left: 0;
+//     position: relative;
+//     top: 0;
+//     transform: translate(0, 0);
+//   }
 
-  a {
-    background: rgba($red, 0);
-    border-bottom: 1px solid;
-    color: $red;
-    line-height: 1.4;
-    padding: .25em;
-    text-decoration: none;
-    &:hover {
-      background: rgba($red, 1);
-      color: $white;
-    }
-  }
-}
-//button styles
+//   a {
+//     background: rgba($red, 0);
+//     border-bottom: 1px solid;
+//     color: $red;
+//     line-height: 1.4;
+//     padding: .25em;
+//     text-decoration: none;
+//     &:hover {
+//       background: rgba($red, 1);
+//       color: $white;
+//     }
+//   }
+// }
+// //button styles
 
-$pink: #d93e60;
-$yellow: #ead084;
-.btn {
-  outline:none;
-  height: 10%;
-  text-align: center;
-  width: 60%;
-  border-radius:40px;
-  background: transparent;
-  border: 2px solid $pink;
-  color: $yellow;
-  letter-spacing:1px;
-  text-shadow:0;
-  text-decoration: none;
-  text-shadow: 3px 3px 30px #ead084;
-  margin: 2em 0;
-  padding: 1em;
-  box-shadow: 0px 0px 15px 3px #d93e60;
-  font:{
-    size:1.5em;
-    weight:bold;
-  }
-  cursor: pointer;
-  transition: all 0.25s ease;
-  &:hover {
-    color:#fff;
-    text-shadow: 3px 3px 30px #ead084;
-    background: $pink;
-  }
-  &:active {
-    //letter-spacing: 2px;
-    letter-spacing: 2px ;
-  }
-  &:after {
-    content:"";
-  }
-  @media (max-width: 400px) {
-    outline:none;
-    height: 10%;
-    text-align: center;
-    border-radius:40px;
-    background: transparent;
-    border: 2px solid $pink;
-    color: $yellow;
-    letter-spacing:1px;
-    text-shadow:0;
-    text-decoration: none;
-    text-shadow: 3px 3px 30px #ead084;
-    margin: 2em 0;
-    padding: 1em;
-    box-shadow: 0px 0px 15px 3px #d93e60;
-    font:{
-      size:1.5em;
-      weight:bold;
-    }
-    cursor: pointer;
-    transition: all 0.25s ease;
-    &:hover {
-      color:#fff;
-      text-shadow: 3px 3px 30px #ead084;
-      background: $pink;
-    }
-    &:active {
-      //letter-spacing: 2px;
-      letter-spacing: 2px ;
-    }
-    &:after {
-      content:"";
-    }
-  }
-}
-.onclic {
-  width: 40px;
-  border-color:$yellow;
-  border-width:3px;
-  font-size:0;
-  border-left-color:$pink;
-  animation: rotating 2s 0.25s linear infinite;
+// $pink: #d93e60;
+// $yellow: #ead084;
+// .btn {
+//   outline:none;
+//   height: 10%;
+//   text-align: center;
+//   width: 60%;
+//   border-radius:40px;
+//   background: transparent;
+//   border: 2px solid $pink;
+//   color: $yellow;
+//   letter-spacing:1px;
+//   text-shadow:0;
+//   text-decoration: none;
+//   text-shadow: 3px 3px 30px #ead084;
+//   margin: 2em 0;
+//   padding: 1em;
+//   box-shadow: 0px 0px 15px 3px #d93e60;
+//   font:{
+//     size:1.5em;
+//     weight:bold;
+//   }
+//   cursor: pointer;
+//   transition: all 0.25s ease;
+//   &:hover {
+//     color:#fff;
+//     text-shadow: 3px 3px 30px #ead084;
+//     background: $pink;
+//   }
+//   &:active {
+//     //letter-spacing: 2px;
+//     letter-spacing: 2px ;
+//   }
+//   &:after {
+//     content:"";
+//   }
+//   @media (max-width: 400px) {
+//     outline:none;
+//     height: 10%;
+//     text-align: center;
+//     border-radius:40px;
+//     background: transparent;
+//     border: 2px solid $pink;
+//     color: $yellow;
+//     letter-spacing:1px;
+//     text-shadow:0;
+//     text-decoration: none;
+//     text-shadow: 3px 3px 30px #ead084;
+//     margin: 2em 0;
+//     padding: 1em;
+//     box-shadow: 0px 0px 15px 3px #d93e60;
+//     font:{
+//       size:1.5em;
+//       weight:bold;
+//     }
+//     cursor: pointer;
+//     transition: all 0.25s ease;
+//     &:hover {
+//       color:#fff;
+//       text-shadow: 3px 3px 30px #ead084;
+//       background: $pink;
+//     }
+//     &:active {
+//       //letter-spacing: 2px;
+//       letter-spacing: 2px ;
+//     }
+//     &:after {
+//       content:"";
+//     }
+//   }
+// }
+// .onclic {
+//   width: 40px;
+//   border-color:$yellow;
+//   border-width:3px;
+//   font-size:0;
+//   border-left-color:$pink;
+//   animation: rotating 2s 0.25s linear infinite;
 
-  &:after {
-    content:"";
-  }
-  &:hover {
-    color:$pink;
-    background: transparent;
-  }
-}
-.validate {
-  font-size:13px;
-  color: white;
-  background: $pink;
-  &:after {
-    // font-family:'Goyang';
-    font-family: "DungGeunMo";
-    content:"\f00c";
-  }
-}
+//   &:after {
+//     content:"";
+//   }
+//   &:hover {
+//     color:$pink;
+//     background: transparent;
+//   }
+// }
+// .validate {
+//   font-size:13px;
+//   color: white;
+//   background: $pink;
+//   &:after {
+//     content:"\f00c";
+//   }
+// }
 
 @keyframes rotating {
   from {
@@ -251,3 +323,26 @@ $yellow: #ead084;
     transform: rotate(360deg);
   }
 }
+
+
+
+ 
+@media only screen and (max-width: 700px) {
+  html .con-body{
+    .con-bhome{
+      padding: 0;
+      .home {
+        border-radius: 0;
+        margin: 0 auto 1.5rem auto;
+      }
+      .wrapper {
+        margin: 0;
+        .wrapper-grid {
+          background: #f4f4f4;
+          margin: 0 10px;
+        }
+      }
+    }
+  }
+}
+
